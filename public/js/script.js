@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    console.log("backend-project2 JS imported successfully!");
+    console.log("backend-project JS imported successfully!");
   },
   false
 );

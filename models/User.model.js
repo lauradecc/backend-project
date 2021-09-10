@@ -1,13 +1,21 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
-const userSchema = new Schema({
-  username: {
-    type: String,
-    // unique: true -> Ideally, should be unique, but its up to you
-  },
-  password: String,
-});
+const userSchema = new Schema(
+  {
+    email: { type: String, unique: true },
+    name: String,
+    password: String,
+    role: {
+      type: String,
+      enum: ['USER', 'MODERATOR', 'ADMIN'],
+      default: 'USER',
+    },
+    day: {  // separamos day (mood, rating?) y diario???
+      type: Schema.Types.ObjectId,
+      ref: 'Day'
+    }
+  }, { timestamps: true }
+);
 
 const User = model("User", userSchema);
 

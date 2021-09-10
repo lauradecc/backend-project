@@ -1,2 +1,21 @@
-<h1>{{title}} 🚀</h1>
+<h1>{{siteTitle}} 🚀</h1>
 <p>Welcome Ironhacker!</p>
+
+
+<div id='calendar'>
+    
+</div>
+
+
+<script src='/fullcalendar/main.js'></script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth'
+    });
+    calendar.render();
+    });
+
+</script>

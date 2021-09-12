@@ -15,7 +15,8 @@
 | POST	| /my-profile/delete	| Cambia active a false	| |
 | POST 	| /:adviceId/delete	| Elimina consejo de BBDD y redirije al perfil	| |
 | GET	| /home	| Saluda al usuario y pregunta cómo está hoy + otras opciones (botones)	| |
-| POST	| /home	| Guarda estado de ánimo en la BBDD	| El usuario debe meter el mood cada día |
+| POST	| /home	| Guarda estado de ánimo en la BBDD	| |
+| GET	| /calendar	| Muestra el calendario | |
 | GET	| /moments	| Muestra lista de momentos	| |
 | GET	| /moments/create	| Muestra formulario para crear un nuevo lugar/momento	| |
 | POST	| /moments/create	| Guarda nuevo lugar/momento en la BBDD	| Si hay datos de lugar, crear el lugar, con el id del nuevo lugar creado, crear el momento. Si no tiene lugar, es null o what? |

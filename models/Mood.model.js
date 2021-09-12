@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const moodSchema = new Schema(
   {
-    date: Date,
+    date: String, // si queremos que elijan fecha, sería esto o Date? INPUT TYPE DATE string tipo yyyy-mm-dd. y el día actual por defecto?
     rating: {
       type: Number,
       min: 1,

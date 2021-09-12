@@ -1,17 +1,16 @@
 const { Schema, model } = require("mongoose");
 
-const daySchema = new Schema(
+const moodSchema = new Schema(
   {
     date: Date,
-    mood: {
+    rating: {
       type: Number,
       min: 1,
       max: 5
-    },
-    phrase: String,
+    }
   }, { timestamps: true }
 );
 
-const Day = model("Day", userSchema);
+const Mood = model("Mood", moodSchema);
 
-module.exports = Day;
+module.exports = Mood;

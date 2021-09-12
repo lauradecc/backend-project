@@ -6,13 +6,12 @@ const placeSchema = new Schema(
       type: String,
       unique: true
     },
-    description: String,
     location: {
       type: {
           type: String
       },
       coordinates: [Number]
-    }
+    },
   }, { timestamps: true}
 );
 

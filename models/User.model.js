@@ -10,10 +10,22 @@ const userSchema = new Schema(
       enum: ['USER', 'MODERATOR', 'ADMIN'],
       default: 'USER',
     },
-    day: {  // separamos day (mood, rating?) y diario???
+    active: {
+      type: Boolean,
+      default: true,
+    },
+    mood: {
       type: Schema.Types.ObjectId,
-      ref: 'Day'
-    }
+      ref: 'Mood'
+    },
+    moment: {
+      type: Schema.Types.ObjectId,
+      ref: 'Moment'
+    },
+    advice: {
+      type: Schema.Types.ObjectId,
+      ref: 'Advice'
+    },
   }, { timestamps: true }
 );
 

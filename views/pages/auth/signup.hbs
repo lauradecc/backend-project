@@ -4,29 +4,37 @@
         <div class="col-md-4">
 
             <h1>Sign up</h1>
-            <br>
             <hr>
             <br>
 
             <form action="/signup" method="POST">
+
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name">
                 </div>
+
                 <div class="form-group">
                     <label for="lastname">Last name</label>
                     <input type="text" class="form-control" id="lastname" name="lastname">
+<<<<<<< HEAD
                 </div>>
+=======
+                </div>
+
+>>>>>>> c858bb1b4470565dc82fecef750f45f2e7a2dd6f
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
+
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="userPwd">
                 </div>
 
-                <button type="submit" class="btn btn-dark btn-block">Sign in</button>
+                <button type="submit" class="btn btn-dark btn-block">Sign Up</button>
+
             </form>
 
             {{#if errorMsg}}
@@ -35,7 +43,7 @@
 
             <hr>
 
-            <p>Already registered? <a href="/login">Log in</a>.</p>
+            <p>Already Have An Account? <a href="/login">Log In</a>.</p>
             
         </div>
     </div>

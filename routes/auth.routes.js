@@ -3,11 +3,11 @@ const bcrypt = require('bcrypt')
 const User = require("../models/User.model")
 
 
-// Signup
+// Sign up
 router.get('/signup', (req, res) => res.render('pages/auth/signup'))
 router.post('/signup', (req, res) => {
 
-  const { email, name, userPwd } = req.body
+  const { email, name, lastname, userPwd } = req.body
 
   if (userPwd.length === 0 || email.length === 0) {      
     res.render('pages/auth/signup', { errorMsg: 'Rellena todos los campos' }) // añadir en las vistas
@@ -28,7 +28,7 @@ router.post('/signup', (req, res) => {
       const hashPass = bcrypt.hashSync(userPwd, salt)    
 
       User
-        .create({ email, name, password: hashPass })         
+        .create({ email, name, lastname, password: hashPass })         
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
     })
@@ -37,7 +37,7 @@ router.post('/signup', (req, res) => {
 
 
 
-// Login
+// Log in
 router.get('/login', (req, res) => res.render('pages/auth/login'))
 router.post('/login', (req, res) => {
 

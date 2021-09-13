@@ -48,4 +48,7 @@ router.post("/", (req, res, next) => {
 });
 
 
+router.get('/home',(req,res)=>res.render('pages/app/home'))
+
+
 module.exports = router;

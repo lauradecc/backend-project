@@ -47,8 +47,23 @@ router.post("/", (req, res, next) => {
 
 });
 
+// Ruta para acceder al home del usuario
+router.get('/home', (req, res) => res.render('pages/app/home'))
 
-router.get('/home',(req,res)=>res.render('pages/app/home'))
+//ruta para acceder a la vista que te dice la frase del dia
+router.get('/daily-phrase', (req, res) => res.render('pages/app/daily-phrase'))
+
+//ruta para acceder a la vista que te ofrece actividades para realizar cada dia
+router.get('/activity', (req, res) => res.render('pages/app/activity'))
+
+// ruta para acceder a la vista que te ofrece un consejo diario
+router.get('/daily-advice', (req, res) => res.render('pages/app/daily-advice'))
+
+// ruta para acceder a la vista que muestra tus lugares creados
+router.get('/places', (req, res) => res.render('pages/app/places'))
+
+
+router.get('/calendar', (req, res) => res.render('pages/app/calendar'))
 
 
 module.exports = router;

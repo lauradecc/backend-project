@@ -7,7 +7,10 @@ const moodSchema = new Schema(
       type: Number,
       min: 1,
       max: 5
-    }
+    },
+    allDay: Boolean,
+    display: String,
+    color: String,
   }, { timestamps: true }
 );
 

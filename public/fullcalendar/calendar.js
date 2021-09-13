@@ -36,34 +36,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     },
-    initialDate: '2021-07-12', // si no se especifica, es la actual (poner color por defecto que queramos?)
-    events: [
-      {
-        start: '2021-07-11',
-        allDay: true, // solo para un día sería esto
-        display: 'background',
-        color: '#ff9f89'
-      },
-      {
-        start: '2021-07-13',
-        end: '2021-07-13',
-        display: 'background',
-        color: '#ff0000'
-      },
-      {
-        start: '2021-07-24',
-        end: '2021-07-28',
-        overlap: false,
-        display: 'background',
-        color: '#0000ff'
-      },
-      {
-        start: '2021-07-06',
-        end: '2021-07-08',
-        overlap: false,
-        display: 'background'
-      }
-    ]
+    initialDate: '2021-09-12', // si no se especifica, es la actual (poner color por defecto que queramos?)
+    events: '/api/moods'
+    // [
+    //   {
+    //     start: '2021-07-11',
+    //     allDay: true, // solo para un día sería esto
+    //     display: 'background',
+    //     color: '#ff9f89'
+    //   },
+    //   {
+    //     start: '2021-07-13',
+    //     end: '2021-07-13',
+    //     display: 'background',
+    //     color: '#ff0000'
+    //   },
+    //   {
+    //     start: '2021-07-24',
+    //     end: '2021-07-28',
+    //     overlap: false,
+    //     display: 'background',
+    //     color: '#0000ff'
+    //   },
+    //   {
+    //     start: '2021-07-06',
+    //     end: '2021-07-08',
+    //     overlap: false,
+    //     display: 'background'
+    //   }
+    // ]
   });
   calendar.render();
   });

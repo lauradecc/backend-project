@@ -4,7 +4,10 @@ const placeSchema = new Schema(
   {
     name: {
       type: String,
-      unique: true
+      required: true,
+      default: 'Unknown',
+      minlength: 2,
+      maxlength: 100
     },
     location: {
       type: {

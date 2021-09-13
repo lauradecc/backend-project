@@ -4,7 +4,7 @@ const Mood = require("../models/Mood.model");
 router.get("/moods", (req, res, next) => {
   
   Mood
-    .find()
+    .find() // del usuario con sesión iniciada
     .then(moods => res.json(moods))
     .catch(err => console.log(err))
 });

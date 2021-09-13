@@ -1,5 +1,8 @@
 module.exports = {
 
+    userIsModerator: user => user.role === 'MODERATOR',
+
+
     capitalize: text => text.charAt(0).toUpperCase() + text.substring(1),
 
 

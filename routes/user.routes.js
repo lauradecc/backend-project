@@ -1,6 +1,6 @@
 const router = require("express").Router()
-
 const { isLoggedIn } = require("./../middleware")
+
 
 
 // User's profile
@@ -42,6 +42,7 @@ router.post('/delete-profile', isLoggedIn, (req, res) => {
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
+
 
 
 module.exports = router

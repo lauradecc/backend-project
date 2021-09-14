@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const Moment = require('./../models/Moment.model')
 
+const { formatDate } = require('./../utils/index')
 
 //ruta para acceder a la vista index de los momentos
 router.get('/', (req, res) => {
@@ -40,8 +41,22 @@ router.get('/:id/edit', (req, res) => {
     const {id} = req.params
     console.log(req.params)
 
+    Moment
+        .findById(id)
+        .then(moment =>{
+            
+             const { date } = moment
+
+            const dateISO = formatDate(date)
+            console.log(dateISO)
+
+            res.render('pages/moments/edit-moment',{ moment, dateISO})
+
+        })
+        .catch(err => console.log(err))
+
     
-    res.render('pages/moments/edit-moment')})
+    })
 
 
 //ruta que recoge los datos del formulario de edición, actualiza los datos y redirige a la lista de momemntos

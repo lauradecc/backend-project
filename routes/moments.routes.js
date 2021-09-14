@@ -8,14 +8,14 @@ router.get('/', (req, res) => {
 
     Moment
         .find()
-        .then(allMoments => res.render('pages/app/moments/moments',{ allMoments }))
+        .then(allMoments => res.render('pages/moments/moments',{ allMoments }))
         .catch(err => console.log(err))
        
 })
 
 
 //ruta para acceder a la vista que crea los momentos
-router.get('/create', (req, res) => res.render('pages/app/moments/create-moment'))
+router.get('/create', (req, res) => res.render('pages/moments/create-moment'))
 
 
 //ruta que recoge los datos del formulario de edición, actualiza los datos y redirige a la lista de momemntos
@@ -35,11 +35,20 @@ router.post('/create', (req, res) =>{
 
 
 //ruta para acceder a la vista que edita los momentos
-router.get('/:id/edit', (req, res) => res.render('pages/app/moments/edit-moment'))
+router.get('/:id/edit', (req, res) => {
+    
+    const {id} = req.params
+    console.log(req.params)
+
+    
+    res.render('pages/moments/edit-moment')})
 
 
 //ruta que recoge los datos del formulario de edición, actualiza los datos y redirige a la lista de momemntos
-router.post('/:id/edit', (req, res) => res.redirect('/moments'))
+router.post('/:id/edit', (req, res) =>{
+    
+
+    res.redirect('/moments')})
 
 
 //ruta que recoge los datos del momento a eliminar, elimina el momento y redirige a la lista de momemntos

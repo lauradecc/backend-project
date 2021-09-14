@@ -7,18 +7,22 @@
             <br>
 
             <form action="/moderators/{{id}}/edit" method="POST">
+
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="name" class="form-control" id="name" name="name" value="{{ name }}">
                 </div>
+
                 <div class="form-group">
                     <label for="lastname">Last Name</label>
                     <input type="lastname" class="form-control" id="lastname" name="lastname" value="{{ lastname }}">
                 </div>
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" value="{{ email }}">
                 </div>
+
                 <div class="form-group">
                     <label for="role">Role</label>
                     <select name="role" class="form-control" id="role">
@@ -29,6 +33,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-dark btn-block">Save changes</button>
+                
             </form>
 
             {{#if errorMsg}}

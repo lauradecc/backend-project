@@ -1,11 +1,7 @@
-<form action="/community-advice" method="POST">
-    <div class="form-group">
-        <label for="advice">Create a new advice for the community!</label>
-        <textarea name="phrase" class="form-control" id="advice" aria-label="With textarea"></textarea>
-        <br>
-        <button type="submit" class="btn btn-dark btn-block">Create a new advice</button>
-    </div>
-</form>
+
+<h1>Community Advice</h1>
+<hr>
+<br>
 
 <ul>
     {{#each advice}}
@@ -15,3 +11,22 @@
         </li>
     {{/each}}
 </ul>
+
+<br>
+<hr>
+
+<h5>Create a new advice for the community!</h5>
+<form action="/community-advice" method="POST">
+
+    <div class="form-group">
+        <label for="advice"></label>
+        <textarea name="phrase" class="form-control" id="advice" aria-label="With textarea"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-dark btn-block">Create A New Advice</button>
+
+</form>
+
+{{#if errorMsg}}
+    <p id="errorMessage">{{errorMsg}}</p>
+{{/if}}

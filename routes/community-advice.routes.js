@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Advice = require("../models/Advice.model")
+const { isBlank } = require("./../utils")
 const { isLoggedIn, checkRoles} = require("./../middleware")   // usar checkroles
 
 
@@ -19,6 +20,17 @@ router.post("/", isLoggedIn, (req, res) => {
 
   const { phrase } = req.body
   const owner = req.session.currentUser._id
+
+  if (isBlank(phrase)) {
+
+    Advice            // mismo código que en get (arriba)
+      .find({ hasBeenAccepted: true })
+      .select('phrase rating') // TO_DO rating? No lo estamos pasando, aún no está creado
+      .then(advice => res.render('pages/community-advice/advice', { advice, errorMsg: 'Please provide an advice' }))
+      .catch(err => console.log(err))
+
+    return
+  }
 
   Advice
     .create({ phrase, owner })

@@ -1,12 +1,8 @@
-<h1>Those are your Moments view</h1>
+<h1>My Happy Moments</h1>
 
+{{#each moments}}
 
-
-{{#each allMoments}}
-
-
-
- <div class="row row-cols-3">
+  <div class="row row-cols-3">
     <div class="card d-flex justify-content-space-around" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{ date }}</h5>
@@ -25,11 +21,7 @@
 <br>
 <br>
 
-<div>
-
-     <a class="btn btn-primary btn-lg btn-block" href="/moments/create" role="button">Create a moment</a>
-
-</div>
+<a class="btn btn-primary btn-lg btn-block" href="/moments/create" role="button">Create A New Moment</a>
 
 <br>
 <br>

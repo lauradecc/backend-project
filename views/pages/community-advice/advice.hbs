@@ -1,3 +1,12 @@
+<form action="/community-advice" method="POST">
+    <div class="form-group">
+        <label for="advice">Create a new advice for the community!</label>
+        <textarea name="phrase" class="form-control" id="advice" aria-label="With textarea"></textarea>
+        <br>
+        <button type="submit" class="btn btn-dark btn-block">Create a new advice</button>
+    </div>
+</form>
+
 <ul>
     {{#each advice}}
         <li>

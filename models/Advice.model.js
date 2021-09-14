@@ -16,7 +16,12 @@ const adviceSchema = new Schema(
     }],
     hasBeenAccepted: {
       type: Boolean,
-      default: null,
+      default: false,
+      required: true
+    },
+    hasBeenRejected: {
+      type: Boolean,
+      default: false,
       required: true
     },
     owner: {

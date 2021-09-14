@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const { isLoggedIn } = require("./../middleware")
-const { getDailyPhrase } = require("./../utils") // si no lo usamos hay que meter axios
+const { getDaily } = require("./../utils") // si no lo usamos hay que meter axios
 
 
 
 router.get("/", (req, res) => {
 
-  getDailyPhrase()
+  getDaily('https://inspiration.goprogram.ai/')
     .then(response => res.render('pages/index', { response }))
     .catch(err => console.log(err))
 });

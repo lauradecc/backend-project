@@ -29,13 +29,11 @@
 | GET	| /daily-phrase	| Muestra la frase inspiracional del día traída desde API (la de la home)	|
 | GET	| /activity	| Muestra una actividad para hacer traída desde API	|
 | GET	| /daily-advice |	Muestra el consejo del día traído desde API	|
-| GET	| /community-advice	| Muestra la lista de consejos que publican los usuarios (aceptados por el moderador)	|
-| GET	| /community-advice/create	| Muestra formulario para crear un nuevo consejo para la comunidad	|
-| POST	| /community-advice/create	| Guarda consejo en la BBDD a la espera de ser aceptados y redirige a la lista de consejos de usuarios	|
-| GET	| /community-advice/control	| Muestra la lista de consejos por aceptar y ofrece al moderador la opción de aceptarlos/editarlos/eliminarlos. Acceso solo al moderador |
-| GET	| /community-advice/:adviceId/edit	| Muestra formulario para editar consejo. Acceso solo al moderador |
-| POST	| /community-advice/:adviceId/edit	| Actualiza consejo en la base de datos y redirige a la lista de consejos por aceptar. Acceso solo al moderador |
-| POST	| /community-advice/:placeId/delete	| Elimina un consejo de la BBDD	| Acceso solo al moderador |
+| GET	| /community-advice	| Muestra la lista de consejos que publican los usuarios (aceptados por el moderador) y formulario para crear un nuevo consejo para la comunidad |
+| POST	| /community-advice	| Guarda consejo en la BBDD a la espera de ser aceptados y redirige a la lista de consejos de usuarios	|
+| GET	| /community-advice/control	| Muestra la lista de consejos por aceptar y ofrece al moderador la opción de aceptarlos/editarlos/eliminarlos. Acceso solo al moderador y al admin |
+| GET	| /community-advice/:adviceId/edit	| Muestra formulario para editar consejo. Acceso solo al moderador y al admin |
+| POST	| /community-advice/:adviceId/edit	| Actualiza consejo en la base de datos y redirige a la lista de consejos por aceptar. Acceso solo al moderador y al admin |
 | GET	| /moderators	| Muestra una lista de los moderadores actuales (puede editarlos o eliminarlos)	| Acceso admin y moderadores, pero solo ve las opciones de editar y eliminar el admin |
 | GET	| /moderators/:moderatorId/edit	| Muestra formulario para editar moderador. Acceso solo admin	|
 | POST	| /moderators/:moderatorId/edit	| Guarda cambios de moderador en la BBDD (hacer que el moderador sea usuario normal). Acceso solo admin	|

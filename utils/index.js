@@ -24,6 +24,6 @@ module.exports = {
     isBlank: value => value.length === 0 || !value.match(/\S/),
 
 
-    getDailyPhrase: () => axios.get('https://inspiration.goprogram.ai/')
+    getDaily: (url) => axios.get(url)
 
 }

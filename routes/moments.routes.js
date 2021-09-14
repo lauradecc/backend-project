@@ -4,7 +4,14 @@ const Moment = require('./../models/Moment.model')
 
 
 //ruta para acceder a la vista index de los momentos
-router.get('/', (req, res) => res.render('pages/app/moments/moments'))
+router.get('/', (req, res) => {
+
+    Moment
+        .find()
+        .then(allMoments => res.render('pages/app/moments/moments',{ allMoments }))
+        .catch(err => console.log(err))
+       
+})
 
 
 //ruta para acceder a la vista que crea los momentos
@@ -12,7 +19,19 @@ router.get('/create', (req, res) => res.render('pages/app/moments/create-moment'
 
 
 //ruta que recoge los datos del formulario de edición, actualiza los datos y redirige a la lista de momemntos
-router.post('/create', (req, res) => res.redirect('/moments'))
+router.post('/create', (req, res) =>{
+
+    const {date, phrase, lat, lng} = req.body 
+
+    const location = { type: "Point", coordinates: [lat, lng] };
+
+    const owner = req.session.currentUser._id
+
+    Moment
+        .create({ date, phrase, location, owner })
+        .then(() => res.redirect('/moments'))
+        .catch(err => console.log(err))
+})
 
 
 //ruta para acceder a la vista que edita los momentos

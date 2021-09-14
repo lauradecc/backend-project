@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Moment = require('./../models/Moment.model')
 const { isLoggedIn, checkId } = require("./../middleware")
-
+const { formatDate } = require('./../utils/index')
 
 //ruta para acceder a la vista index de los momentos
 router.get('/', isLoggedIn, (req, res) => {
@@ -35,7 +35,26 @@ router.post('/create', isLoggedIn, (req, res) =>{
 
 
 //ruta para acceder a la vista que edita los momentos
-router.get('/:id/edit', isLoggedIn, checkId, (req, res) => res.render('pages/moments/edit-moment'))
+router.get('/:id/edit', isLoggedIn, checkId, (req, res) => {
+
+    const {id} = req.params
+    console.log(req.params)
+
+    Moment
+        .findById(id)
+        .then(moment =>{
+            
+             const { date } = moment
+
+            const dateISO = formatDate(date)
+            console.log(dateISO)
+
+            res.render('pages/moments/edit-moment',{ moment, dateISO})
+
+        })
+        .catch(err => console.log(err))
+
+})
 
 
 //ruta que recoge los datos del formulario de edición, actualiza los datos y redirige a la lista de momemntos
@@ -44,6 +63,7 @@ router.post('/:id/edit', isLoggedIn, checkId, (req, res) => res.redirect('/momen
 
 //ruta que recoge los datos del momento a eliminar, elimina el momento y redirige a la lista de momemntos
 router.post('/:id/delete', isLoggedIn, checkId, (req, res) => res.redirect('/moments'))
+
 
 
 module.exports = router;

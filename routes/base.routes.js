@@ -1,10 +1,14 @@
 const router = require("express").Router();
 const { isLoggedIn } = require("./../middleware")
+const { getDailyPhrase } = require("./../utils") // si no lo usamos hay que meter axios
 
 
 
 router.get("/", (req, res) => {
-  res.render("pages/index");
+
+  getDailyPhrase()
+    .then(response => res.render('pages/index', { response }))
+    .catch(err => console.log(err))
 });
 
 

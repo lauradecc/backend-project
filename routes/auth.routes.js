@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const bcrypt = require('bcrypt')
 const User = require("../models/User.model")
+const { isBlank } = require("./../utils")
 
 
 
@@ -10,8 +11,8 @@ router.post('/signup', (req, res) => {
 
   const { email, name, lastname, userPwd } = req.body
 
-  if (userPwd.length === 0 || email.length === 0) {      
-    res.render('pages/auth/signup', { errorMsg: 'Rellena todos los campos' }) // añadir en las vistas
+  if (isBlank(name) || isBlank(lastname) || isBlank(email) || isBlank(userPwd)) { 
+    res.render('pages/auth/signup', { email, name, lastname, errorMsg: 'Fill in all the fields' }) // añadir en las vistas
     return
   }
 
@@ -20,7 +21,7 @@ router.post('/signup', (req, res) => {
     .then(user => {
 
       if (user) {                  
-        res.render('pages/auth/signup', { errorMsg: 'Usuario ya registrado' })
+        res.render('pages/auth/signup', { errorMsg: 'User already registered' })
         return
       }
 
@@ -45,7 +46,7 @@ router.post('/login', (req, res) => {
   const { email, userPwd } = req.body
 
   if (userPwd.length === 0 || email.length === 0) {     
-    res.render('pages/auth/login', { errorMsg: 'Rellena los campos' })
+    res.render('pages/auth/login', { errorMsg: 'Fill in all the fields' })
     return
   }
 
@@ -54,12 +55,12 @@ router.post('/login', (req, res) => {
     .then(user => {
 
       if (!user) {
-        res.render('pages/auth/login', { errorMsg: 'Usuario no reconocido' })
+        res.render('pages/auth/login', { errorMsg: 'Unrecognized user' })
         return
       }
 
       if (bcrypt.compareSync(userPwd, user.password) === false) {
-        res.render('pages/auth/login', { errorMsg: 'Contraseña incorrecta' })
+        res.render('pages/auth/login', { errorMsg: 'Incorrect password' })
         return
       }
 

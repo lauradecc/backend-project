@@ -1,18 +1,18 @@
 const router = require("express").Router();
 const bcrypt = require('bcrypt')
-const { userIsModerator } = require("./../utils") // utilizar
+const { isBlank, userIsAdmin } = require("./../utils")
 const User = require("../models/User.model");
 const { isLoggedIn, checkId, checkRoles } = require("./../middleware")
 
 
 
-router.get('/', isLoggedIn, checkRoles('ADMIN, MODERATOR'), (req, res) => {
+router.get('/', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
-  //const isModerator = userIsModerator(req.session.currentUser)
+  const isAdmin = userIsAdmin(req.session.currentUser)
 
   User
     .find({ role: 'MODERATOR' })
-    .then(moderators => res.render('pages/moderators/moderators', { moderators }))
+    .then(moderators => res.render('pages/moderators/moderators', { moderators, isAdmin }))
     .catch(err => console.log(err))
 });
 
@@ -34,6 +34,11 @@ router.post('/:id/edit', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) =>
 
   const { id } = req.params
   const { name, lastname, email, role } = req.body
+
+  if (isBlank(name) || isBlank(lastname) || isBlank(email)) {       
+    res.render('pages/moderators/edit-moderator', { name, lastname, email, errorMsg: 'Fill in all the fields' })
+    return
+ }
 
   User
     .findByIdAndUpdate(id, { name, lastname, email, role }, { new: true })
@@ -63,7 +68,7 @@ router.post('/:id/delete', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) 
 
 
 
-// TO_DO: Crear nuevo moderador es repetir bastante código (sign up)
+// TO_DO: Crear nuevo moderador es repetir bastante código, hacer partials (sign up)
 router.get('/moderators/create', isLoggedIn, checkRoles('ADMIN'), (req, res) => {
 
   const { name, lastname, email, moderatorPwd } = req.body

@@ -1,4 +1,6 @@
+{{#if isAdmin}}
 <a href="/moderators/create" class="btn btn-dark">Create New Moderator</a>
+{{/if}}
 <br>
 
 {{!-- Para cambiar el rol de usuario a moderador, revisar endpoints de readme --}}
@@ -15,11 +17,14 @@
     {{#each moderators}}
         <li>
             {{ name }} {{ lastname }} ({{ email }})
-            <small>- <a href="/moderators/{{ id }}/edit">[Editar]</a></small>
-        </li>
 
-        <form action="/moderators/{{ id }}/delete" method="POST">
-            <button type="submit" class="btn btn-danger btn-sm ml-2">Delete moderator</button>
-        </form>
+            {{#if ./../isAdmin}}
+            <small>- <a href="/moderators/{{ id }}/edit">[Editar]</a></small>
+
+            <form action="/moderators/{{ id }}/delete" method="POST">
+                <button type="submit" class="btn btn-danger btn-sm ml-2">Delete moderator</button>
+            </form>
+            {{/if}}
+        </li>
     {{/each}}
 </ul>

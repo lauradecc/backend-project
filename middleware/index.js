@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 module.exports = {
 
     isLoggedIn: (req, res, next) => {
-        req.session.currentUser ? next() : res.render('pages/auth/login', { errorMsg: 'Inicia sesión para continuar' })
+        req.session.currentUser ? next() : res.render('pages/auth/login', { errorMsg: 'Login to continue' })
     },
 
     checkRoles: (...roles) => (req, res, next) => {

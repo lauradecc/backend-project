@@ -1,13 +1,15 @@
+const axios = require('axios')
+
 module.exports = {
 
-    userIsModerator: user => user.role === 'MODERATOR',
+    userIsAdmin: user => user.role === 'ADMIN',
 
 
     capitalize: text => text.charAt(0).toUpperCase() + text.substring(1),
 
 
-    // NOS HACE FALTA??????????
     formatDate: date => {
+
         let month = '' + (date.getMonth() + 1)
         let day = '' + date.getDate()
         let year = date.getFullYear()
@@ -16,6 +18,12 @@ module.exports = {
         if (day.length < 2) day = '0' + day;
 
         return [year, month, day].join('-')
-    }
+    },
+
+
+    isBlank: value => value.length === 0 || !value.match(/\S/),
+
+
+    getDailyPhrase: () => axios.get('https://inspiration.goprogram.ai/')
 
 }

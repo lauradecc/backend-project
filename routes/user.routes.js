@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const { isLoggedIn } = require("./../middleware")
 const User = require("../models/User.model")
+const { isBlank } = require("./../utils")
 
 
 
@@ -24,6 +25,11 @@ router.post('/edit', isLoggedIn, (req, res) => {
 
     const user = req.session.currentUser
     const { name, lastname, email } = req.body
+
+    if (isBlank(name) || isBlank(lastname) || isBlank(email)) { 
+       res.render('pages/user/edit-profile', { name, lastname, email, errorMsg: 'Fill in all the fields' })
+       return
+    }
     
     User
         .findByIdAndUpdate(user._id, { name, lastname, email }, { new: true })

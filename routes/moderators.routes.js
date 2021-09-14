@@ -4,6 +4,7 @@ const { userIsModerator } = require("./../utils") // utilizar
 const User = require("../models/User.model");
 
 
+
 router.get('/', (req, res, next) => {
 
   //const isModerator = userIsModerator(req.session.currentUser)
@@ -13,6 +14,7 @@ router.get('/', (req, res, next) => {
     .then(moderators => res.render('pages/moderators/moderators', { moderators }))
     .catch(err => console.log(err))
 });
+
 
 
 router.get('/:id/edit', (req, res) => {
@@ -39,6 +41,7 @@ router.post('/:id/edit', (req, res) => {
 })
 
 
+
 router.post('/:id/delete', (req, res) => {
 
   const { id } = req.params
@@ -57,6 +60,8 @@ router.post('/:id/delete', (req, res) => {
     .catch(err => console.log(err))
 })
 
+
+
 // TO_DO: Crear nuevo moderador es repetir bastante código (sign up)
 router.get('/moderators/create', (req, res) => {
 
@@ -66,11 +71,10 @@ router.get('/moderators/create', (req, res) => {
   //   .create({ name, lastname, email })
 })
 
+
 router.post('/moderators/create', (req, res) => {
 
 })
-
-
 
 
 

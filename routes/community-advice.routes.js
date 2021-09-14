@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Advice = require("../models/Advice.model")
 
 
+
 router.get("/", (req, res, next) => {
   
   Advice
@@ -10,8 +11,6 @@ router.get("/", (req, res, next) => {
     .then(advice => res.render('pages/community-advice/advice', { advice }))
     .catch(err => console.log(err))
 });
-
-
 
 
 

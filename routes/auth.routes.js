@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const User = require("../models/User.model")
 
 
+
 // Sign up
 router.get('/signup', (req, res) => res.render('pages/auth/signup'))
 router.post('/signup', (req, res) => {
@@ -75,6 +76,7 @@ router.post('/login', (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'))
 })
+
 
 
 module.exports = router

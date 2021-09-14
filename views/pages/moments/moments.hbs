@@ -1,41 +1,33 @@
 <h1>Those are your Moments view</h1>
 
+
+
 {{#each allMoments}}
 
+
+
  <div class="row row-cols-3">
-  <div class="card d-flex justify-content-space-around" style="width: 18rem;">
-  <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">{{date}}</h6>
-    <p class="card-text">{{phrase}}</p>
-    <a href="/moments/{{id}}/edit" class="card-link">Edit your moment</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-  </div>
+    <div class="card d-flex justify-content-space-around" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ date }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ place.name }}</h6>
+        <p class="card-text">{{ phrase }}</p>
+        <a href="/moments/{{ id }}/edit" class="card-link">Edit your moment</a>
+        <form action="/moments/{{ id }}/delete" method="POST">
+          <button type="submit" class="btn btn-danger card-link">Delete moment</button>
+        </form>
+      </div>
+    </div>
   </div>
 
 {{/each}}
 
-<div>
-    
-    <a class="btn btn-primary btn-lg btn-block" href="/moments/create" role="button">Create a moment</a>
-
-</div>
-
 <br>
 <br>
 
 <div>
 
-    <a class="btn btn-primary btn-lg btn-block" href="/activity" role="button">edit a moment</a>
-
-</div>
-
-<br>
-<br>
-
-<div>
-
-     <a class="btn btn-primary btn-lg btn-block" href="/daily-advice" role="button">Delete a moment</a>
+     <a class="btn btn-primary btn-lg btn-block" href="/moments/create" role="button">Create a moment</a>
 
 </div>
 

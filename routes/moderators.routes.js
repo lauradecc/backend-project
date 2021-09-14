@@ -2,10 +2,11 @@ const router = require("express").Router();
 const bcrypt = require('bcrypt')
 const { userIsModerator } = require("./../utils") // utilizar
 const User = require("../models/User.model");
+const { isLoggedIn, checkId, checkRoles } = require("./../middleware")
 
 
 
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, checkRoles('ADMIN, MODERATOR'), (req, res) => {
 
   //const isModerator = userIsModerator(req.session.currentUser)
 
@@ -17,7 +18,7 @@ router.get('/', (req, res, next) => {
 
 
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => {
 
   const { id } = req.params
 
@@ -29,7 +30,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 
-router.post('/:id/edit', (req, res) => {
+router.post('/:id/edit', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => {
 
   const { id } = req.params
   const { name, lastname, email, role } = req.body
@@ -42,7 +43,7 @@ router.post('/:id/edit', (req, res) => {
 
 
 
-router.post('/:id/delete', (req, res) => {
+router.post('/:id/delete', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => {
 
   const { id } = req.params
 
@@ -63,7 +64,7 @@ router.post('/:id/delete', (req, res) => {
 
 
 // TO_DO: Crear nuevo moderador es repetir bastante código (sign up)
-router.get('/moderators/create', (req, res) => {
+router.get('/moderators/create', isLoggedIn, checkRoles('ADMIN'), (req, res) => {
 
   const { name, lastname, email, moderatorPwd } = req.body
 
@@ -72,7 +73,7 @@ router.get('/moderators/create', (req, res) => {
 })
 
 
-router.post('/moderators/create', (req, res) => {
+router.post('/moderators/create', isLoggedIn, checkRoles('ADMIN'), (req, res) => {
 
 })
 

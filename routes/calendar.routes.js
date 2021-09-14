@@ -1,11 +1,12 @@
 const router = require("express").Router();
 const Mood = require("../models/Mood.model");
+const { isLoggedIn } = require("./../middleware")
 
 
 
-router.get('/', (req, res) => res.render('pages/calendar/calendar'))
+router.get('/', isLoggedIn, (req, res) => res.render('pages/calendar/calendar'))
 
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
 
   const { date, rating } = req.body
   const owner = req.session.currentUser._id

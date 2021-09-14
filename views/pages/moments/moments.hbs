@@ -1,10 +1,17 @@
-<h1>This is Moments view</h1>
+<h1>Those are your Moments view</h1>
 
 {{#each allMoments}}
 
-{{date}}
-{{phrase}}
-
+ <div class="row row-cols-3">
+  <div class="card d-flex justify-content-space-around" style="width: 18rem;">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">{{date}}</h6>
+    <p class="card-text">{{phrase}}</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+  </div>
+  </div>
 
 {{/each}}
 

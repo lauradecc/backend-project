@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const Advice = require("../models/Advice.model")
+const { isLoggedIn, checkRoles} = require("./../middleware")   // usar checkroles
 
 
 
-router.get("/", (req, res, next) => {
+router.get("/", isLoggedIn, (req, res, next) => {
   
   Advice
     .find({ hasBeenAccepted: true })

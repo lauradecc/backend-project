@@ -3,7 +3,7 @@ const Mood = require("../models/Mood.model");
 
 
 
-router.get("/moods", (req, res, next) => {
+router.get("/moods", (req, res) => {
   
   Mood
     .find() // del usuario con sesión iniciada

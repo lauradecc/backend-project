@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { isLoggedIn } = require("./../middleware")
 
 
 
@@ -8,7 +9,7 @@ router.get("/", (req, res) => {
 
 
 
-router.get('/home', (req, res) => res.render('pages/home'))
+router.get('/home', isLoggedIn, (req, res) => res.render('pages/home'))
 
 
 

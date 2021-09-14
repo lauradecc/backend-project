@@ -1,8 +1,15 @@
 <h1>My Profile</h1>
 
 <p>Name and last name: {{ user.name }} {{ user.lastname }}<p>
-<p>Email: {{ user.email }}</p>  
-<a href="/my-profile/edit" class="btn btn-dark">Edit My Profile</a>
-<form action="/my-profile/delete" method="POST">
-    <button type="submit" class="btn btn-danger">Delete My Profile</button>
-</form>
+
+<p>Email: {{ user.email }}</p> 
+
+<div class="d-flex">
+
+    <a href="/my-profile/edit" class="btn btn-dark">Edit My Profile</a>
+
+    <form action="/my-profile/delete" method="POST">
+        <button type="submit" class="btn btn-danger ml-2">Delete My Profile</button>
+    </form>
+
+</div>

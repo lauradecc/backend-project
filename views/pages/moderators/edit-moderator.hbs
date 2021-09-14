@@ -1,49 +1,36 @@
  <div class="row justify-content-center">
 
-        <div class="col-md-4">
+    <div class="col-md-4">
 
-            <h1>Edit {{ name }} {{ lastname }}</h1>
-            <hr>
-            <br>
+        <h1>Edit {{ name }} {{ lastname }}</h1>
+        <hr>
+        <br>
 
-            <form action="/moderators/{{id}}/edit" method="POST">
+        <form action="/moderators/{{id}}/edit" method="POST">
 
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="name" class="form-control" id="name" name="name" value="{{ name }}">
-                </div>
+            {{> nameLastnameInputs }}
 
-                <div class="form-group">
-                    <label for="lastname">Last Name</label>
-                    <input type="lastname" class="form-control" id="lastname" name="lastname" value="{{ lastname }}">
-                </div>
+            {{> emailInput }}
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ email }}">
-                </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select name="role" class="form-control" id="role">
+                    <option value="MODERATOR" selected>Moderator</option>
+                    <option value="USER">User</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="role">Role</label>
-                    <select name="role" class="form-control" id="role">
-                        <option value="MODERATOR" selected>Moderator</option>
-                        <option value="USER">User</option>
-                        <option value="ADMIN">Admin</option>
-                    </select>
-                </div>
+            <button type="submit" class="btn btn-dark btn-block">Save changes</button>
 
-                <button type="submit" class="btn btn-dark btn-block">Save changes</button>
-                
-            </form>
+        </form>
 
-            {{#if errorMsg}}
-            <p id="errorMessage">{{errorMsg}}</p>
-            {{/if}}
+        {{> ifErrorMessage }}
 
-            <hr>
-            <a href="/moderators" class="btn btn-dark">Go back</a>
-            <hr>
+        <hr>
+        <a href="/moderators" class="btn btn-dark">Go back</a>
+        <hr>
+    
         
-            
-        </div>
     </div>
+</div>

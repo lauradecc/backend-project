@@ -2,18 +2,30 @@
 
 {{#each moments}}
 
-  <div class="row row-cols-3">
-    <div class="card d-flex justify-content-space-around" style="width: 18rem;">
+<div class="container">
+  <div class="row">
+    <div class="card col-md-4 mb-3">
       <div class="card-body">
+
         <h5 class="card-title">{{ date }}</h5>
+
         <h6 class="card-subtitle mb-2 text-muted">{{ place.name }}</h6>
+
         <p class="card-text">{{ phrase }}</p>
-        <a href="/moments/{{ id }}/edit" class="card-link">Edit your moment</a>
-        <form action="/moments/{{ id }}/delete" method="POST">
-          <button type="submit" class="btn btn-danger card-link">Delete moment</button>
-        </form>
+
+        <div class="d-flex">
+
+          <a href="/moments/{{ id }}/edit" class="btn btn-primary card-link">Edit Moment</a>
+
+          <form action="/moments/{{ id }}/delete" method="POST">
+            <button type="submit" class="btn btn-danger card-link ml-2">Delete Moment</button>
+          </form>
+
+        </div>
+
       </div>
     </div>
+  </div>
   </div>
 
 {{/each}}
@@ -21,7 +33,7 @@
 <br>
 <br>
 
-<a class="btn btn-primary btn-lg btn-block" href="/moments/create" role="button">Create A New Moment</a>
+<a class="btn btn-dark btn-lg btn-block" href="/moments/create" role="button">Create A New Moment</a>
 
 <br>
 <br>

@@ -2,10 +2,7 @@
 
 <form action="/community-advice/{{ id }}/edit" method="POST">
 
-    <div class="form-group">
-        <label for="advice"></label>
-        <textarea name="phrase" class="form-control" id="advice" aria-label="With textarea">{{ phrase }}</textarea>
-    </div>
+    {{> adviceInput }}
 
     <button type="submit" class="btn btn-dark btn-block">Edit Advice</button>
 

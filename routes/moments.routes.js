@@ -6,6 +6,7 @@ const { formatDate, isBlank } = require('./../utils/index')
 
 
 // Hay que cambiar el formato de las fechas
+// Mostrar solo los momentos del usuario activo!!!!
 router.get('/', isLoggedIn, (req, res) => {
 
     Moment

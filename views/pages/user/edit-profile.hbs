@@ -1,39 +1,26 @@
  <div class="row justify-content-center">
 
-        <div class="col-md-4">
+    <div class="col-md-4">
 
-            <h1>Edit My Profile</h1>
-            <hr>
-            <br>
+        <h1>Edit My Profile</h1>
+        <hr>
+        <br>
 
-            <form action="/my-profile/edit" method="POST">
+        <form action="/my-profile/edit" method="POST">
 
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ name }}">
-                </div>
+            {{> nameLastnameInputs }}
 
-                <div class="form-group">
-                    <label for="lastname">Last name</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" value="{{ lastname }}">
-                </div>
+            {{> emailInput }}
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ email }}">
-                </div>
+            <button type="submit" class="btn btn-dark btn-block">Save Changes</button>
 
-                <button type="submit" class="btn btn-dark btn-block">Save Changes</button>
+        </form>
 
-            </form>
+        {{> ifErrorMessage }}
 
-            {{#if errorMsg}}
-            <p id="errorMessage">{{errorMsg}}</p>
-            {{/if}}
-
-            <hr>
-            <a href="/my-profile" class="btn btn-dark">Go back</a>
-            <hr>
-            
-        </div>
+        <hr>
+        <a href="/my-profile" class="btn btn-dark">Go back</a>
+        <hr>
+        
     </div>
+</div>

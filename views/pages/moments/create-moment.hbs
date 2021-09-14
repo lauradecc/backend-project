@@ -1,48 +1,23 @@
 
 <div class="row justify-content-center">
 
-        <div class="col-md-4">
+    <div class="col-md-4">
 
-            <h1>Create A Happy Moment</h1>
-            <hr>
-            <br>
+        <h1>Create A Happy Moment</h1>
+        <hr>
+        <br>
 
-            <form action="/moments/create" method="POST">
+        <form action="/moments/create" method="POST">
 
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="date" class="form-control" id="date" name="date">
-                </div>
+            {{> momentForm}}
 
-                <div class="form-group">
-                    <label for="phrase">Moment</label>
-                    <textarea name="phrase" class="form-control" id="phrase" aria-label="With textarea"></textarea>
-                </div>
+            <button type="submit" class="btn btn-dark btn-block">Create Moment</button>
 
-                <div class="form-group">
-                    <label for="name">Place name</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div>
+        </form>
 
-                <div class="form-group">
-                    <label for="latitude">Latitude</label>
-                    <input type="text" class="form-control" id="latitude" name="lat">
-                </div>
+        {{> ifErrorMessage }}
 
-                 <div class="form-group">
-                    <label for="longitude">Longitude</label>
-                    <input type="text" class="form-control" id="longitude" name="lng">
-                </div>
-
-                <button type="submit" class="btn btn-dark btn-block">Create a moment</button>
-            </form>
-
-            {{#if errorMsg}}
-            <p id="errorMessage">{{errorMsg}}</p>
-            {{/if}}
-
-            <hr>
+        <hr>
            
-
-        </div>
     </div>
+</div>

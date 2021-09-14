@@ -8,27 +8,19 @@
 
             <form action="/login" method="POST">
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
-                </div>
+                {{> emailInput }}
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="userPwd">
-                </div>
+                {{> passwordInput }}
 
                 <button type="submit" class="btn btn-dark btn-block">Log In</button>
 
             </form>
 
-            {{#if errorMsg}}
-            <p id="errorMessage">{{errorMsg}}</p>
-            {{/if}}
+            {{> ifErrorMessage }}
 
-            <hr>
+            <br>
 
-            <p>Not Registered Yet? <a href="/signup">Sign Up For Free</a></p>
+            <p class="text-center">Not Registered Yet? <a href="/signup">Sign Up For Free</a></p>
             
         </div>
     </div>

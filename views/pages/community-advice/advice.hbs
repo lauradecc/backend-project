@@ -1,4 +1,3 @@
-
 <h1>Community Advice</h1>
 <hr>
 <br>
@@ -16,17 +15,13 @@
 <hr>
 
 <h5>Create a new advice for the community!</h5>
+
 <form action="/community-advice" method="POST">
 
-    <div class="form-group">
-        <label for="advice"></label>
-        <textarea name="phrase" class="form-control" id="advice" aria-label="With textarea"></textarea>
-    </div>
+    {{> adviceInput }}
 
     <button type="submit" class="btn btn-dark btn-block">Create A New Advice</button>
 
 </form>
 
-{{#if errorMsg}}
-    <p id="errorMessage">{{errorMsg}}</p>
-{{/if}}
+{{> ifErrorMessage }}

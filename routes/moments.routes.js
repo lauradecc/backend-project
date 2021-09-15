@@ -8,10 +8,21 @@ const { formatDate, isBlank } = require('./../utils/index')
 
 router.get('/', isLoggedIn, (req, res) => {
 
+   const id = req.session.currentUser._id
+
     Moment
-        .find()
+        .find({ owner: id })
+        .lean()
         .populate('place')
-        .then(moments => res.render('pages/moments/moments', { moments }))
+        .then(moments =>{
+
+            moments = moments.map( moment => {
+                moment.date = formatDate(moment.date)
+                return moment
+            });
+
+            res.render('pages/moments/moments', { moments })
+        })
         .catch(err => console.log(err)) 
 })
 

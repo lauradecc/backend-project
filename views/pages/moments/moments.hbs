@@ -1,17 +1,23 @@
 <h1>My Happy Moments</h1>
 
-{{allDates.[0]}}
+<br>
+<br>
+
+<a class="btn btn-dark btn-lg btn-block" href="/moments/create" role="button">Create A New Moment</a>
+
+<br>
+<br>
 
 
-{{#each moments}}
 
 <div class="container">
-  <div class="row">
-    <div class="card col-md-4 mb-3">
+  <div class="row justify-content-center">
+{{#each moments}}
+    <div class="card col-md-4 mb-3 mr-3">
       <div class="card-body">
 
 
-    <h5 class="card-title">{{ date }}</h5>
+        <h5 class="card-title">{{ date }}</h5>
 
 
         <h6 class="card-subtitle mb-2 text-muted">{{ place.name }}</h6>
@@ -30,15 +36,9 @@
 
       </div>
     </div>
+{{/each}}
   </div>
 </div>
 
-{{/each}}
 
-<br>
-<br>
 
-<a class="btn btn-dark btn-lg btn-block" href="/moments/create" role="button">Create A New Moment</a>
-
-<br>
-<br>

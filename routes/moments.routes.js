@@ -5,14 +5,23 @@ const { isLoggedIn, checkId } = require("./../middleware")
 const { formatDate, isBlank } = require('./../utils/index')
 
 
-// Hay que cambiar el formato de las fechas
-// Mostrar solo los momentos del usuario activo!!!!
 router.get('/', isLoggedIn, (req, res) => {
 
+   const id = req.session.currentUser._id
+
     Moment
-        .find()
+        .find({ owner: id })
+        .lean()
         .populate('place')
-        .then(moments => res.render('pages/moments/moments', { moments }))
+        .then(moments =>{
+
+            moments = moments.map( moment => {
+                moment.date = formatDate(moment.date)
+                return moment
+            });
+
+            res.render('pages/moments/moments', { moments })
+        })
         .catch(err => console.log(err)) 
 })
 
@@ -33,7 +42,7 @@ router.post('/create', isLoggedIn, (req, res) => {
     por tanto, no sale nada después aunque se meta, porque no se guarda
     podría meterse en nombre del sitio en el modelo de moment... */
     if (isBlank(date) || isBlank(phrase) || isBlank(name)) {
-        res.render('pages/moments/create-moment', { errorMsg: 'Fill Date, Phrase and Place Name' })
+        res.render('pages/moments/create-moment', { errorMsg: 'Fill Date, Moment and Place Name' })
         return
     }
 

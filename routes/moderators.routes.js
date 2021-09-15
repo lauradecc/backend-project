@@ -8,63 +8,63 @@ const { isLoggedIn, checkId, checkRoles } = require("./../middleware")
 
 router.get('/', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
-  const isAdmin = userIsAdmin(req.session.currentUser)
+	const isAdmin = userIsAdmin(req.session.currentUser)
 
-  User
-    .find({ role: 'MODERATOR' })
-    .select('name lastname email')
-    .then(moderators => res.render('pages/moderators/moderators', { moderators, isAdmin }))
-    .catch(err => console.log(err))
+	User
+		.find({ role: 'MODERATOR' })
+		.select('name lastname email')
+		.then(moderators => res.render('pages/moderators/moderators', { moderators, isAdmin }))
+		.catch(err => console.log(err))
 });
 
 
 
 router.get('/:id/edit', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => {
 
-  const { id } = req.params
+	const { id } = req.params
 
-  User
-    .findById(id)
-    .select('name lastname email role')
-    .then(moderator => res.render('pages/moderators/edit-moderator', moderator))
-    .catch(err => console.log(err))
+	User
+		.findById(id)
+		.select('name lastname email role')
+		.then(moderator => res.render('pages/moderators/edit-moderator', moderator))
+		.catch(err => console.log(err))
 })
 
 
 router.post('/:id/edit', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => {
 
-  const { id } = req.params
-  const { name, lastname, email, role } = req.body
+	const { id } = req.params
+	const { name, lastname, email, role } = req.body
 
-  if (isBlank(name) || isBlank(lastname) || isBlank(email)) {       
-    res.render('pages/moderators/edit-moderator', { name, lastname, email, errorMsg: 'Fill in all the fields' })
-    return
- }
+	if (isBlank(name) || isBlank(lastname) || isBlank(email)) {
+		res.render('pages/moderators/edit-moderator', { name, lastname, email, errorMsg: 'Fill in all the fields' })
+		return
+	}
 
-  User
-    .findByIdAndUpdate(id, { name, lastname, email, role }, { new: true })
-    .then(() => res.redirect('/moderators'))
-    .catch(err => console.log(err))
+	User
+		.findByIdAndUpdate(id, { name, lastname, email, role }, { new: true })
+		.then(() => res.redirect('/moderators'))
+		.catch(err => console.log(err))
 })
 
 
 
 router.post('/:id/delete', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => {
 
-  const { id } = req.params
+	const { id } = req.params
 
-  //TO_DO delete del user, actualmente active to false,
-  //en ese caso gestionar signup y login, si no eliminar del todo
+	//TO_DO delete del user, actualmente active to false,
+	//en ese caso gestionar signup y login, si no eliminar del todo
 
-  // User
-  //   .findByIdAndUpdate(id, { active: false })
-  //   .then(() => res.redirect('/moderators'))
-  //   .catch(err => console.log(err))
+	// User
+	//   .findByIdAndUpdate(id, { active: false })
+	//   .then(() => res.redirect('/moderators'))
+	//   .catch(err => console.log(err))
 
-  User
-    .findByIdAndRemove(id)
-    .then(() => res.redirect('/moderators'))
-    .catch(err => console.log(err))
+	User
+		.findByIdAndRemove(id)
+		.then(() => res.redirect('/moderators'))
+		.catch(err => console.log(err))
 })
 
 
@@ -72,10 +72,10 @@ router.post('/:id/delete', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) 
 // TO_DO: Crear nuevo moderador es repetir bastante código, hacer partials (sign up)
 router.get('/moderators/create', isLoggedIn, checkRoles('ADMIN'), (req, res) => {
 
-  const { name, lastname, email, moderatorPwd } = req.body
+	const { name, lastname, email, moderatorPwd } = req.body
 
-  // User
-  //   .create({ name, lastname, email })
+	// User
+	//   .create({ name, lastname, email })
 })
 
 

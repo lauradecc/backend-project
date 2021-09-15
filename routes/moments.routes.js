@@ -59,17 +59,18 @@ router.post('/create', isLoggedIn, (req, res) => {
         return
     }
 
-    Place.create({ name, location })
-    .then(newPlace => {
+    Place
+        .create({ name, location })
+        .then(newPlace => {
 
-        const place = newPlace._id
+            const place = newPlace._id
 
-        Moment
-            .create({ date, phrase, place, owner })
-            .then(() => res.redirect('/moments'))
-            .catch(err => console.log(err))
-    })
-    .catch(err => console.log(err))
+            Moment
+                .create({ date, phrase, place, owner })
+                .then(() => res.redirect('/moments'))
+                .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
 })
 
 

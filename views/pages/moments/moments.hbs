@@ -3,42 +3,39 @@
 <br>
 <br>
 
-<a class="btn btn-dark btn-lg btn-block" href="/moments/create" role="button">Create A New Moment</a>
-
-<br>
-<br>
-
-
-
-<div class="container">
-  <div class="row justify-content-center">
-{{#each moments}}
-    <div class="card col-md-4 mb-3 mr-3">
-      <div class="card-body">
-
-
-        <h5 class="card-title">{{ date }}</h5>
-
-
-        <h6 class="card-subtitle mb-2 text-muted">{{ place.name }}</h6>
-
-        <p class="card-text">{{ phrase }}</p>
-
-        <div class="d-flex">
-
-          <a href="/moments/{{ id }}/edit" class="btn btn-primary card-link">Edit Moment</a>
-
-          <form action="/moments/{{ id }}/delete" method="POST">
-            <button type="submit" class="btn btn-danger card-link ml-2">Delete Moment</button>
-          </form>
-
-        </div>
-
-      </div>
-    </div>
-{{/each}}
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <a class="btn btn-dark btn-lg btn-block" href="/moments/create" role="button">Create A New Moment</a>
   </div>
 </div>
 
+<br>
+<br>
 
+<div class="container">
+  <div class="row justify-content-center">
+    {{#each moments}}
+      <div class="card col-md-4 mb-3 mr-3">
+        <div class="card-body">
 
+          <h5 class="card-title">{{ date }}</h5>
+
+          <h6 class="card-subtitle mb-2 text-muted">{{ place.name }}</h6>
+
+          <p class="card-text">{{ phrase }}</p>
+
+          <div class="d-flex">
+
+            <a href="/moments/{{ id }}/edit" class="btn btn-primary card-link">Edit Moment</a>
+
+            <form action="/moments/{{ id }}/delete" method="POST">
+              <button type="submit" class="btn btn-danger card-link ml-2">Delete Moment</button>
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

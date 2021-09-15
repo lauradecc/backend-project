@@ -6,6 +6,7 @@ const { isLoggedIn } = require("./../middleware")
 
 router.get('/', isLoggedIn, (req, res) => res.render('pages/calendar/calendar'))
 
+
 router.post('/', isLoggedIn, (req, res) => {
 
   const { date, rating } = req.body
@@ -35,12 +36,8 @@ router.post('/', isLoggedIn, (req, res) => {
   
   Mood 
     .create({ date, rating, color, owner})
-    .then(newMood => {
-      console.log(newMood)
-      res.redirect('/calendar')
-    })
+    .then(() => res.render('pages/home', { successMsg: 'Mood saved successfully' }))
     .catch(err => console.log(err))
-
 });
 
 

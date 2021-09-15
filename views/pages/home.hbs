@@ -2,6 +2,55 @@
 
     <div class="col-md-4">
 
+        <h3>Hey {{ currentUserName }}, </h3>
+        <h5>How do you feel today?</h5>
+        <br>
+
+        <form action="/calendar" method="POST" class="d-flex flex-column">
+
+            <input type="date" name="date">
+
+            <br>
+
+            <div class="row justify-content-center">
+
+                <label class="mood-label">
+                    <input type="radio" name="rating" value="1" class="mood">
+                    <img src="images/sad.png" class="mr-3">
+                </label>
+
+                <label class="mood-label">
+                    <input type="radio" name="rating" value="2" class="mood">
+                    <img src="images/halfsad.png" class="mr-3">
+                </label>
+
+                <label class="mood-label">
+                    <input type="radio" name="rating" value="3" class="mood">
+                    <img src="images/neutral.png" class="mr-3">
+                </label>
+
+                <label class="mood-label">
+                    <input type="radio" name="rating" value="4" class="mood">
+                    <img src="images/halfhappy.png" class="mr-3">
+                </label>
+
+                <label class="mood-label">
+                    <input type="radio" name="rating" value="5" class="mood">
+                    <img src="images/happy.png">
+                </label>
+
+            </div>
+            
+            <br>
+
+            <button type="submit" class="btn btn-dark btn-block">Save Mood</button>
+
+            {{> ifSuccessMessage }}
+
+        </form>
+
+        <br>
+
         <a class="btn btn-dark btn-lg btn-block" href="/daily/phrase" role="button">Daily Phrase</a>
 
         <br>

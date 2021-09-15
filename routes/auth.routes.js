@@ -11,7 +11,7 @@ router.post('/signup', (req, res) => {
 
   const { email, name, lastname, userPwd } = req.body
 
-  if (isBlank(name) || isBlank(lastname) || isBlank(email) || isBlank(userPwd)) { 
+  if (isBlank(name) || isBlank(lastname) || isBlank(email) || isBlank(userPwd)) {
     res.render('pages/auth/signup', { email, name, lastname, errorMsg: 'Fill in all the fields' }) // añadir en las vistas
     return
   }
@@ -20,17 +20,17 @@ router.post('/signup', (req, res) => {
     .findOne({ email })
     .then(user => {
 
-      if (user) {                  
+      if (user) {
         res.render('pages/auth/signup', { errorMsg: 'User already registered' })
         return
       }
 
       const bcryptSalt = 10
       const salt = bcrypt.genSaltSync(bcryptSalt)
-      const hashPass = bcrypt.hashSync(userPwd, salt)    
+      const hashPass = bcrypt.hashSync(userPwd, salt)
 
       User
-        .create({ email, name, lastname, password: hashPass })         
+        .create({ email, name, lastname, password: hashPass })
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
     })
@@ -45,7 +45,7 @@ router.post('/login', (req, res) => {
 
   const { email, userPwd } = req.body
 
-  if (userPwd.length === 0 || email.length === 0) {     
+  if (userPwd.length === 0 || email.length === 0) {
     res.render('pages/auth/login', { errorMsg: 'Fill in all the fields' })
     return
   }
@@ -63,9 +63,10 @@ router.post('/login', (req, res) => {
         res.render('pages/auth/login', { errorMsg: 'Incorrect password' })
         return
       }
-      
+
       req.session.currentUser = user
       req.app.locals.isLogged = req.session.currentUser
+      req.app.locals.currentUserName = req.session.currentUser.name
       user.role === 'MODERATOR' || user.role === 'ADMIN' ? req.app.locals.isAuthorized = true : req.app.locals.isAuthorized = false
 
       res.redirect('/home')

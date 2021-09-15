@@ -1,5 +1,3 @@
-const axios = require('axios')
-
 module.exports = {
 
     userIsAdmin: user => user.role === 'ADMIN',
@@ -24,6 +22,12 @@ module.exports = {
     isBlank: value => value.length === 0 || !value.match(/\S/),
 
 
-    getDaily: (url) => axios.get(url)
+    // someFieldsBlank: (input1, input2, input3) => {
+
+    //     (!isBlank(input1) && (isBlank(input2) || isBlank(input3))) ||
+    //     (!isBlank(input2) && (isBlank(input1) || isBlank(input3))) ||
+    //     (!isBlank(input3) && (isBlank(input1) || isBlank(input2)))
+    // }
+
 
 }

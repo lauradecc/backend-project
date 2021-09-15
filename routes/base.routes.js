@@ -1,12 +1,14 @@
 const router = require("express").Router();
 const { isLoggedIn } = require("./../middleware")
-const { getDaily } = require("./../utils") // si no lo usamos hay que meter axios
+const APIHandler = require("./../services/APIHandler");
+const API = new APIHandler;
 
 
 
 router.get("/", (req, res) => {
 
-  getDaily('https://inspiration.goprogram.ai/')
+  API
+    .getPhrase()
     .then(response => res.render('pages/index', { response }))
     .catch(err => console.log(err))
 });

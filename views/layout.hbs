@@ -22,31 +22,55 @@
          <div class='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul class='navbar-nav ml-auto'>
               
+               {{#if isLogged}}
                <li class='nav-item'>
                   <a class='nav-link' href='/home'>Home</a>
                </li>
-
+               
                <li class='nav-item'>
-                  <a class='nav-link' href='/moments'>Moments</a>
+                  <a class='nav-link' href='/moments'>My Moments</a>
                </li>
 
                <li class='nav-item'>
-                  <a class='nav-link' href='/calendar'>Calendar</a>
+                  <a class='nav-link' href='/calendar'>My Calendar</a>
+               </li>
+
+               <li class='nav-item'>
+                  <a class='nav-link' href='/places'>My Places</a>
+               </li>
+
+               <li class='nav-item'>
+                  <a class='nav-link' href='/community-advice'>Community Advice</a>
                </li>
 
                <li class='nav-item'>
                   <a class='nav-link' href='/my-profile'>My Profile</a>
                </li>
 
-               <li class='nav-item'>
-                  <a class='nav-link' href='/places'>Places</a>
-               </li>
-
+               {{#if isAuthorized}}
                <li class='nav-item'>
                   <a class='nav-link' href='/moderators'>Moderators</a>
                </li>
+               {{/if}}
 
-               <li class="nav-item dropdown">
+               <li class='nav-item'>
+                  <a class='nav-link' href="/logout">Log Out</a>
+               </li>
+               {{/if}}
+
+               {{#unless isLogged}}
+               <li class='nav-item'>
+                  <a class='nav-link' href='/login'>Log In</a>
+               </li>
+
+               <li class='nav-item'>
+                  <a class='nav-link' href='/signup'>Sign Up</a>
+               </li>
+               {{/unless}}
+
+               
+
+               {{!-- <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      Auth
                   </a>
@@ -56,7 +80,7 @@
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="/logout">Log out</a>
                   </div>
-               </li>
+               </li> --}}
 
             </ul>
          </div>

@@ -63,8 +63,11 @@ router.post('/login', (req, res) => {
         res.render('pages/auth/login', { errorMsg: 'Incorrect password' })
         return
       }
-
+      
       req.session.currentUser = user
+      req.app.locals.isLogged = req.session.currentUser
+      user.role === 'MODERATOR' || user.role === 'ADMIN' ? req.app.locals.isAuthorized = true : req.app.locals.isAuthorized = false
+
       res.redirect('/home')
     })
     .catch(err => console.log(err))
@@ -76,6 +79,7 @@ router.post('/login', (req, res) => {
 // Logout
 router.get('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'))
+  req.app.locals.isLogged = false
 })
 
 

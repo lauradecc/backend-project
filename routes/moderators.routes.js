@@ -12,6 +12,7 @@ router.get('/', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
   User
     .find({ role: 'MODERATOR' })
+    .select('name lastname email')
     .then(moderators => res.render('pages/moderators/moderators', { moderators, isAdmin }))
     .catch(err => console.log(err))
 });

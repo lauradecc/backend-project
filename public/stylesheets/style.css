@@ -17,7 +17,7 @@ h1, h2, h3 {
 
 #errorMessage {
   background-color: rgb(255, 202, 202);
-  width: 400px;
+  width: 355px;
   position: fixed;
   right: 10px;
   bottom: 10px;
@@ -46,6 +46,6 @@ h1, h2, h3 {
   }
 
   100% {
-    bottom: -50px
+    bottom: -80px
   }
 }

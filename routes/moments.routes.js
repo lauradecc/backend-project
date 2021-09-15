@@ -5,8 +5,7 @@ const { isLoggedIn, checkId } = require("./../middleware")
 const { formatDate, isBlank } = require('./../utils/index')
 
 
-// Hay que cambiar el formato de las fechas
-// Mostrar solo los momentos del usuario activo!!!!
+
 router.get('/', isLoggedIn, (req, res) => {
 
     Moment
@@ -28,18 +27,20 @@ router.post('/create', isLoggedIn, (req, res) => {
     const location = { type: "Point", coordinates: [ lat, lng ] }
     const owner = req.session.currentUser._id
 
-    /* obligatorio name place? (is required en model, pero no es obligatorio crear lugar)
-    esto hace que haya que poner nombre de lugar, pero al no haber coordenadas no puede crearse un lugar
-    por tanto, no sale nada después aunque se meta, porque no se guarda
-    podría meterse en nombre del sitio en el modelo de moment... */
-    if (isBlank(date) || isBlank(phrase) || isBlank(name)) {
-        res.render('pages/moments/create-moment', { errorMsg: 'Fill Date, Phrase and Place Name' })
+    if (isBlank(date) || isBlank(phrase)) {
+        res.render('pages/moments/create-moment', { errorMsg: 'Fill Date and Moment' })
         return
     }
 
-    /* mejorable? esto y lo de debajo. Si no hay latitud y longitud, no puede crearse lugar, 
-    lo de abajo no serviría */
-    if (isBlank(lat) || isBlank(lng)) {
+    // TO_DO: Mejorable????
+    if ((!isBlank(lat) && (isBlank(lng) || isBlank(name))) ||
+        (!isBlank(lng) && (isBlank(lat) || isBlank(name))) ||
+        (!isBlank(name) && (isBlank(lat) || isBlank(lng)))) {
+        res.render('pages/moments/create-moment', { errorMsg: 'Must fill Place Name, Latitude and Longitud to save a place in a Moment' })
+        return
+    }
+    
+    if (isBlank(lat) && isBlank(lng) && isBlank(name)) {
         Moment
             .create({ date, phrase, owner })
             .then(() => res.redirect('/moments'))
@@ -80,8 +81,17 @@ router.get('/:id/edit', isLoggedIn, checkId, (req, res) => {
 })
 
 
-// FALTA?????????
-router.post('/:id/edit', isLoggedIn, checkId, (req, res) => res.redirect('/moments'))
+
+router.post('/:id/edit', isLoggedIn, checkId, (req, res) => {
+
+    const { id } = req.params
+    const { date, phrase, name, lat, lng } = req.body
+
+    Moment
+        .findByIdAndUpdate(id, { date, phrase, name, lat, lng }, { new: true })
+        .then(() => res.redirect('/moments'))
+        .catch(err => console.log(err))
+})
 
 
 

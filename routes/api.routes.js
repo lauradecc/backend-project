@@ -13,8 +13,10 @@ router.get("/places", (req, res) => {
 
 router.get("/moods", (req, res) => {
   
+  const id = req.session.currentUser._id
+
   Mood
-    .find() // del usuario con sesión iniciada
+    .find({ owner: id })
     .then(moods => res.json(moods))
     .catch(err => console.log(err))
 });

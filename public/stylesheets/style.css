@@ -7,7 +7,9 @@ h1 {
   text-align: center;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 200;
 }
 
@@ -30,15 +32,13 @@ h1, h2, h3 {
   height: 500px;
 }
 
-
-@keyframes  showFromBottom {
+@keyframes showFromBottom {
   0% {
-    bottom: -50px
+    bottom: -50px;
   }
 
   10% {
     bottom: 10px;
-
   }
 
   90% {
@@ -46,6 +46,6 @@ h1, h2, h3 {
   }
 
   100% {
-    bottom: -80px
+    bottom: -80px;
   }
 }

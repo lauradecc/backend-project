@@ -18,7 +18,7 @@ router.get('/', isLoggedIn, (req, res) => {
 
             moments = moments.map( moment => {
                 moment.date = formatDate(moment.date)
-                return moment
+                return moment                               
             });
 
             res.render('pages/moments/moments', { moments })
@@ -59,17 +59,11 @@ router.post('/create', isLoggedIn, (req, res) => {
         return
     }
 
-    Place.create({ name, location })
-    .then(newPlace => {
-
-        const place = newPlace._id
-
-        Moment
-            .create({ date, phrase, place, owner })
-            .then(() => res.redirect('/moments'))
-            .catch(err => console.log(err))
-    })
-    .catch(err => console.log(err))
+    Place
+        .create({ name, location })
+        .then(newPlace => Moment.create({ date, phrase, place: newPlace._id, owner }))
+        .then(() => res.redirect('/moments'))
+        .catch(err => console.log(err))
 })
 
 

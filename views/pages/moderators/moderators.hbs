@@ -12,7 +12,6 @@
 </form> --}}
 
 <br>
-
 <ul>
     {{#each moderators}}
         <li>
@@ -23,9 +22,20 @@
 
             <form action="/moderators/{{ id }}/delete" method="POST">
                 <button type="submit" class="btn btn-danger btn-sm ml-2">Delete moderator</button>
-            </form>
+            </form>         
             {{/if}}
-
         </li>
     {{/each}}
 </ul>
+
+            <br>
+            <br>          
+            <form class="form-inline my-2 my-lg-0">   
+            <input value="" id="searchUserRoleUSER" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <p id="result"></p>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/app.js"></script>

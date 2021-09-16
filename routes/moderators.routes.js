@@ -3,18 +3,24 @@ const bcrypt = require('bcrypt')
 const { isBlank, userIsAdmin } = require("./../utils")
 const User = require("../models/User.model");
 const { isLoggedIn, checkId, checkRoles } = require("./../middleware")
+const APIHandler = require("./../services/APIHandler");
+const API = new APIHandler;
 
 
 
 router.get('/', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
 	const isAdmin = userIsAdmin(req.session.currentUser)
+	const users = API.getUsersRoleUSER()
+	const moderators = User.find({ role: 'MODERATOR' }).select('name lastname email')
 
-	User
-		.find({ role: 'MODERATOR' })
-		.select('name lastname email')
-		.then(moderators => res.render('pages/moderators/moderators', { moderators, isAdmin }))
-		.catch(err => console.log(err))
+	Promise.all([ users, moderators ]).then(data => {
+
+		const [ users, moderators ] = data
+
+		res.render('pages/moderators/moderators', { users, moderators, isAdmin })
+	})
+	.catch(err => console.log(err))
 });
 
 

@@ -37,7 +37,6 @@ router.post('/', isLoggedIn, (req, res) => {
 
   let moodAlreadyExists = false
 
-
   Mood
     .find({ owner, date })
     .then(mood => moodAlreadyExists = mood.length === 1)

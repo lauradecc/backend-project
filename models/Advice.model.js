@@ -9,7 +9,7 @@ const adviceSchema = new Schema(
       maxlength: 250,
       trim: true
     },
-    rating: [{         // BONUS?
+    rating: [{
       type: Number,
       min: 1,
       max: 5

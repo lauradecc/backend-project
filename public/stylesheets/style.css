@@ -33,6 +33,29 @@ h3 {
   cursor: pointer;
 }
 
+.ratingForm {
+  display: none;
+}
+
+.rating-label img {
+  height: 10px;
+}
+
+.rating {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.rating+img {
+  cursor: pointer;
+}
+
+.vote, .minimize {
+  color: blueviolet
+}
+
 #errorMessage {
   background-color: rgb(255, 202, 202);
   width: 355px;

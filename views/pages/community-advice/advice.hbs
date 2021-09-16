@@ -3,12 +3,55 @@
 <br>
 
 <ul>
-    {{#each advice}}
-        <li>
-            {{ phrase }}
-            {{!-- {{ rating }}  --}}
-        </li>
-    {{/each}}
+  {{#each advice}}
+  <li class="mb-1">
+    {{ phrase }} - <small class="vote">Vote</small>
+
+    <div class="ratingForm">
+      <form action="/community-advice/{{ id }}/vote" method="POST" id="adviceRatingForm">
+
+        <div>
+
+          <label class="rating-label">
+            <input type="radio" name="rating" value="1" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <img src="/images/star.png" class="mr-1">
+          </label>
+
+          <label class="rating-label">
+            <input type="radio" name="rating" value="2" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <img src="/images/star.png" class="mr-1">
+          </label>
+
+          <label class="rating-label">
+            <input type="radio" name="rating" value="3" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <img src="/images/star.png" class="mr-1">
+          </label>
+
+          <label class="rating-label">
+            <input type="radio" name="rating" value="4" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <img src="/images/star.png" class="mr-1">
+          </label>
+
+          <label class="rating-label">
+            <input type="radio" name="rating" value="5" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <img src="/images/star.png">
+          </label>
+
+        </div>
+
+        {{> ifSuccessMessage }}
+
+      </form>
+    </div>
+
+
+    {{!-- <form action="/community-advice/{{ id }}/vote" method="POST">
+      <button type="submit" class="btn btn-primary btn-sm mt-2">Vote</button>
+    </form> --}}
+
+    {{!-- {{ rating }} --}}
+  </li>
+  {{/each}}
 </ul>
 
 <br>
@@ -18,11 +61,13 @@
 
 <form action="/community-advice" method="POST">
 
-    {{> adviceInput }}
+  {{> adviceInput }}
 
-    <button type="submit" class="btn btn-dark btn-block">Create A New Advice</button>
+  <button type="submit" class="btn btn-dark btn-block">Create A New Advice</button>
 
 </form>
 
 {{> ifErrorMessage }}
 {{> ifSuccessMessage }}
+
+<script src="/js/advice-rating.js"></script>

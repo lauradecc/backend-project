@@ -106,28 +106,14 @@ router.post('/delete', isLoggedIn, (req, res) => {
 
 router.post('/:id/vote', isLoggedIn, (req, res) => {
 
-  const owner = req.session.currentUser._id
   const { id } = req.params
   const { rating } = req.body
-
+  
   Advice
     .findByIdAndUpdate(id, { $push: { rating }}, { new: true })
     .then(() => Advice.find({ hasBeenAccepted: true }).select('phrase rating'))
     .then(advice => res.render('pages/community-advice/advice', { advice, successMsg: 'Successfully voted' }))
     .catch(err => console.log(err))
-
-
-  // let ratingAlreadyExists = false
-
-  // Advice
-  //   .find({ owner, id })
-  //   .then(advice => moodAlreadyExists = mood.length === 1)
-  //   .then(() => Mood.updateOne({ owner, date }, { date, rating, color, owner }, { new: true, upsert: true, setDefaultsOnInsert: true }))
-  //   .then(() => {
-  //     if (!moodAlreadyExists) res.render('pages/home', { successMsg: 'Mood saved successfully' })
-  //     else res.render('pages/home', { successMsg: 'Mood updated successfully' })
-  //   })
-  //   .catch(err => console.log(err))
 })
 
 

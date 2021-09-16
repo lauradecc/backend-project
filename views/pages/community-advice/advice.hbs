@@ -6,40 +6,37 @@
   {{#each advice}}
   <li class="mb-1">
     {{ phrase }} - <small class="vote">Vote</small>
-
     <div class="ratingForm">
-      <form action="/community-advice/{{ id }}/vote" method="POST" id="adviceRatingForm">
+      <form action="/community-advice/{{id}}/vote" method="POST" id="{{id}}">
 
         <div>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="1" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <input type="radio" name="rating" value="1" class="rating" onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="2" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <input type="radio" name="rating" value="2" class="rating" onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="3" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <input type="radio" name="rating" value="3" class="rating" onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="4" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <input type="radio" name="rating" value="4" class="rating" onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="5" class="rating" onclick="document.getElementById('adviceRatingForm').submit()">
+            <input type="radio" name="rating" value="5" class="rating" onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png">
           </label>
 
         </div>
-
-        {{> ifSuccessMessage }}
 
       </form>
     </div>
@@ -57,7 +54,7 @@
 <br>
 <hr>
 
-<h5>Create a new advice for the community!</h5>
+<h5 class="text-center">Create a new advice for the community!</h5>
 
 <form action="/community-advice" method="POST">
 

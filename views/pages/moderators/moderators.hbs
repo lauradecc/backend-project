@@ -2,18 +2,11 @@
 
 <hr>
 
-{{!-- Para cambiar el rol de usuario a moderador, revisar endpoints de readme --}}
-{{!-- <form action="">
-    <div class="form-group">
-        <label for="email">Make a user a moderator</label>
-        <input type="email" class="form-control" id="email" name="email">
-    </div>
-</form> --}}
-
 <br>
 <ul>
     {{#each moderators}}
     <li class="mb-3">
+
         {{ name }} {{ lastname }} ({{ email }})
 
         {{#if ./../isAdmin}}
@@ -22,22 +15,23 @@
             <button type="submit" class="btn btn-danger btn-sm ml-2">Delete moderator</button>
         </form>
         {{/if}}
+
     </li>
     {{/each}}
 </ul>
 <br>
 
 {{#if isAdmin}}
-<a href="/moderators/create" class="btn btn-dark">Create New Moderator</a>
-<br>
-<br>
-<br>          
-<form class="form-inline my-2 my-lg-0">   
-<input value="" id="searchUserRoleUSER" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-</form>
-<br>
-<hr>
-<ul id="result"></ul>
+    <a href="/moderators/create" class="btn btn-dark">Create New Moderator</a>
+    <br>
+    <br>
+    <br>          
+    <form class="form-inline my-2 my-lg-0">   
+    <input value="" id="searchUserRoleUSER" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
+    <br>
+    <hr>
+    <ul id="result"></ul>
 {{/if}}
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

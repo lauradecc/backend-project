@@ -16,9 +16,11 @@ router.get('/', isLoggedIn, (req, res) => {
         .populate('place')
         .then(moments =>{
 
+            moments = moments.sort((a,b) => b.date - a.date) 
             moments = moments.map( moment => {
-                moment.date = formatDate(moment.date)
-                return moment                               
+
+                moment.date = formatDate(moment.date)               
+                return moment                              
             });
 
             res.render('pages/moments/moments', { moments })
@@ -61,7 +63,7 @@ router.post('/create', isLoggedIn, (req, res) => {
 
     Place
         .create({ name, location })
-        .then(newPlace => Moment.create({ date, phrase, place: newPlace._id, owner }))
+        .then(newPlace => Moment.create({ dateReversed, phrase, place: newPlace._id, owner }))
         .then(() => res.redirect('/moments'))
         .catch(err => console.log(err))
 })

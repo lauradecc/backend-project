@@ -1,23 +1,23 @@
-
 <div class="row justify-content-center">
 
-    <div class="col-md-4">
+  <div class="col-md-4">
 
-        <h1>Create A Happy Moment</h1>
-        <hr>
-        <br>
+    <h1>Create A Happy Moment</h1>
 
-        <form action="/moments/create" method="POST">
+    <hr>
+    <br>
 
-            {{> momentForm}}
+    <form action="/moments/create" method="POST">
 
-            <button type="submit" class="btn btn-dark btn-block">Create Moment</button>
+      {{> momentForm}}
 
-        </form>
+      <button type="submit" class="btn btn-dark btn-block">Create Moment</button>
 
-        {{> ifErrorMessage }}
+    </form>
 
-        <hr>
-           
-    </div>
+    {{> ifErrorMessage }}
+
+    <hr>
+
+  </div>
 </div>

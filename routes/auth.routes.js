@@ -67,12 +67,12 @@ router.post('/login', (req, res) => {
       req.session.currentUser = user
       req.app.locals.isLogged = req.session.currentUser
       req.app.locals.currentUserName = req.session.currentUser.name
+      req.app.locals.isAuthorized = false
       if (user.role === 'MODERATOR' || user.role === 'ADMIN') req.app.locals.isAuthorized = true
 
       res.redirect('/home')
     })
     .catch(err => console.log(err))
-
 })
 
 

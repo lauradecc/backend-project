@@ -12,27 +12,32 @@
         <div>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="1" class="rating" onclick="document.getElementById('{{id}}').submit()">
+            <input type="radio" name="rating" value="1" class="rating"
+              onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="2" class="rating" onclick="document.getElementById('{{id}}').submit()">
+            <input type="radio" name="rating" value="2" class="rating"
+              onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="3" class="rating" onclick="document.getElementById('{{id}}').submit()">
+            <input type="radio" name="rating" value="3" class="rating"
+              onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="4" class="rating" onclick="document.getElementById('{{id}}').submit()">
+            <input type="radio" name="rating" value="4" class="rating"
+              onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
-            <input type="radio" name="rating" value="5" class="rating" onclick="document.getElementById('{{id}}').submit()">
+            <input type="radio" name="rating" value="5" class="rating"
+              onclick="document.getElementById('{{id}}').submit()">
             <img src="/images/star.png">
           </label>
 
@@ -41,12 +46,8 @@
       </form>
     </div>
 
-
-    {{!-- <form action="/community-advice/{{ id }}/vote" method="POST">
-      <button type="submit" class="btn btn-primary btn-sm mt-2">Vote</button>
-    </form> --}}
-
     {{!-- {{ rating }} --}}
+
   </li>
   {{/each}}
 </ul>

@@ -1,7 +1,7 @@
 const router = require("express").Router()
-const { isLoggedIn } = require("./../middleware")
 const User = require("../models/User.model")
 const Advice = require("../models/Advice.model")
+const { isLoggedIn } = require("./../middleware")
 const { isBlank } = require("./../utils")
 
 
@@ -57,7 +57,6 @@ router.post('/delete', isLoggedIn, (req, res) => {
 
   const user = req.session.currentUser
 
-  // TO_DO delete user o active false???
   User
     .findByIdAndRemove(user._id)
     .then(() => res.redirect('/'))

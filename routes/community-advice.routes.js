@@ -104,4 +104,18 @@ router.post('/delete', isLoggedIn, (req, res) => {
 
 
 
+router.post('/:id/vote', isLoggedIn, (req, res) => {
+
+  const { id } = req.params
+  const { rating } = req.body
+  
+  Advice
+    .findByIdAndUpdate(id, { $push: { rating }}, { new: true })
+    .then(() => Advice.find({ hasBeenAccepted: true }).select('phrase rating'))
+    .then(advice => res.render('pages/community-advice/advice', { advice, successMsg: 'Successfully voted' }))
+    .catch(err => console.log(err))
+})
+
+
+
 module.exports = router;

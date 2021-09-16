@@ -6,17 +6,16 @@
 
 <p>Email: {{ user.email }}</p>
 
-<div class="d-flex">
+<div class="d-flex justify-content-center">
 
-  <a href="/my-profile/edit" class="btn btn-primary">Edit My Profile</a>
+  <a href="/my-profile/edit" class="btn btn-sm btn-primary">Edit My Profile</a>
 
   <form action="/my-profile/delete" method="POST">
-    <button type="submit" class="btn btn-danger ml-2">Delete My Profile</button>
+    <button type="submit" class="btn btn-danger btn-sm ml-2">Delete My Profile</button>
   </form>
 
 </div>
 
-<br>
 <hr>
 
 <h2 class="mt-5">My Advice</h2>
@@ -46,6 +45,6 @@
 
 {{#if thereAreRejected}}
 <form action="/community-advice/delete" method="POST">
-  <button type="submit" class="btn btn-danger ml-2">Delete Rejected Advice</button>
+  <button type="submit" class="btn btn-danger btn-sm ml-2">Delete Rejected Advice</button>
 </form>
 {{/if}}

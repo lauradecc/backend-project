@@ -9,15 +9,19 @@
 
     {{ phrase }}
 
-    <form action="/community-advice/control/{{ id }}" method="POST">
-      <button type="submit" name="hasBeenAccepted" value="true" class="btn btn-success btn-sm">Accept Advice</button>
-    </form>
+      <div class="d-flex mt-1 mb-3">
 
-    <form action="/community-advice/control/{{ id }}" method="POST">
-      <button type="submit" name="hasBeenRejected" value="true" class="btn btn-danger btn-sm">Reject Advice</button>
-    </form>
+      <form action="/community-advice/control/{{ id }}" method="POST">
+        <button type="submit" name="hasBeenAccepted" value="true" class="btn btn-success btn-sm mr-2">Accept</button>
+      </form>
 
-    <a href="/community-advice/{{ id }}/edit" class="btn btn-primary btn-sm">Editar</a>
+      <form action="/community-advice/control/{{ id }}" method="POST">
+        <button type="submit" name="hasBeenRejected" value="true" class="btn btn-danger btn-sm mr-2">Reject</button>
+      </form>
+
+      <a href="/community-advice/{{ id }}/edit" class="btn btn-primary btn-sm">Editar</a>
+
+    </div>
 
   </li>
   {{/each}}

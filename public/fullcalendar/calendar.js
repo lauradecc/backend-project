@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
       center: 'today',
       right: 'next',
     },
-    //initialDate: '2021-09-12', // si no se especifica, es la actual (poner color por defecto que queramos?)
     events: '/api/moods'
   });
   calendar.render();

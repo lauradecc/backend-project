@@ -10,7 +10,7 @@ const momentSchema = new Schema(
       maxlength: 200,
       trim: true
     },
-    place: { // No tiene (pero puede) tener lugar. Si no se añade es undefined
+    place: {
       type: Schema.Types.ObjectId,
       ref: 'Place'
     },

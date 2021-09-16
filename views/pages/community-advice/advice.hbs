@@ -1,43 +1,48 @@
 <h1>Community Advice</h1>
 <hr>
 <br>
-
+{{votes}}
 <ul>
-  {{#each advice}}
-  <li class="mb-1">
-    {{ phrase }} - <small class="vote">Vote</small>
+  {{#each newAdviceArr}}
+  <li class="mb-3">
+    {{ phrase }}
+    {{#if totalVotes}}
+    <br>
+    <small>({{ average }} / 5 - Total votes: {{ totalVotes }}) - </small>
+    {{/if}}
+    <small class="vote">Vote</small>
     <div class="ratingForm">
-      <form action="/community-advice/{{id}}/vote" method="POST" id="{{id}}">
+      <form action="/community-advice/{{_id}}/vote" method="POST" id="{{_id}}">
 
         <div>
 
           <label class="rating-label">
             <input type="radio" name="rating" value="1" class="rating"
-              onclick="document.getElementById('{{id}}').submit()">
+              onclick="document.getElementById('{{_id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
             <input type="radio" name="rating" value="2" class="rating"
-              onclick="document.getElementById('{{id}}').submit()">
+              onclick="document.getElementById('{{_id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
             <input type="radio" name="rating" value="3" class="rating"
-              onclick="document.getElementById('{{id}}').submit()">
+              onclick="document.getElementById('{{_id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
             <input type="radio" name="rating" value="4" class="rating"
-              onclick="document.getElementById('{{id}}').submit()">
+              onclick="document.getElementById('{{_id}}').submit()">
             <img src="/images/star.png" class="mr-1">
           </label>
 
           <label class="rating-label">
             <input type="radio" name="rating" value="5" class="rating"
-              onclick="document.getElementById('{{id}}').submit()">
+              onclick="document.getElementById('{{_id}}').submit()">
             <img src="/images/star.png">
           </label>
 
@@ -45,8 +50,6 @@
 
       </form>
     </div>
-
-    {{!-- {{ rating }} --}}
 
   </li>
   {{/each}}

@@ -10,10 +10,17 @@
     {{ name }} {{ lastname }} ({{ email }})
 
     {{#if ./../isAdmin}}
-    <small>- <a href="/moderators/{{ id }}/edit">[Editar]</a></small>
-    <form action="/moderators/{{ id }}/delete" method="POST">
-      <button type="submit" class="btn btn-danger btn-sm ml-2">Delete moderator</button>
-    </form>
+
+    <div class="d-flex mt-2">
+
+      <a class="btn btn-primary btn-sm" href="/moderators/{{ id }}/edit">[Editar]</a>
+      
+      <form action="/moderators/{{ id }}/delete" method="POST">
+        <button type="submit" class="btn btn-danger btn-sm ml-2">Delete moderator</button>
+      </form>
+
+    </div>
+
     {{/if}}
 
   </li>
@@ -24,11 +31,9 @@
 
 {{#if isAdmin}}
 
-<a href="/moderators/create" class="btn btn-dark">Create New Moderator</a>
+<hr>
 
-<br>
-<br>
-<br>
+<h6 class="text-center"><b>Find users and make them moderators</b></h6>
 
 <form class="form-inline my-2 my-lg-0">
   <input value="" id="searchUserRoleUSER" class="form-control mr-sm-2" type="search" placeholder="Search"

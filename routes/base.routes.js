@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { formatDate } = require("../utils");
 const { isLoggedIn } = require("./../middleware")
 const APIHandler = require("./../services/APIHandler");
 const API = new APIHandler;
@@ -15,7 +16,7 @@ router.get("/", (req, res) => {
 
 
 
-router.get('/home', isLoggedIn, (req, res) => res.render('pages/home'))
+router.get('/home', isLoggedIn, (req, res) => res.render('pages/home', {today: formatDate( new Date())}))
 
 
 

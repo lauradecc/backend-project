@@ -24,7 +24,7 @@ const getUsers = (search) => {
     console.log("el texto buscado", search)
     //texto buscado
     axios
-        .get(`http://localhost:3000/api/users/`)
+        .get(`https://happiapp.herokuapp.com/api/users/`)
         .then(response => {
 
             let users = response.data

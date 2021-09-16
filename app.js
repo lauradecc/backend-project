@@ -11,7 +11,7 @@ hbs.registerPartials(`${__dirname}/views/pages/partials`);
 require("./config")(app);
 require('./config/session.config')(app);
 
-app.locals.siteTitle = 'Backend Project';
+app.locals.siteTitle = 'Happi';
 
 require("./routes")(app);
 

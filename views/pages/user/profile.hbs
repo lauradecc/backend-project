@@ -2,9 +2,9 @@
 
 <hr>
 
-<p>Name and last name: {{ user.name }} {{ user.lastname }}<p>
+<p>Name and last name: {{ user.name }} {{ user.lastname }}</p>
 
-<p>Email: {{ user.email }}</p> 
+<p>Email: {{ user.email }}</p>
 
 <div class="d-flex">
 
@@ -30,22 +30,22 @@
   </thead>
   <tbody>
     {{#each advice}}
-      <tr>
-        <td>{{ phrase }}</td>
-        {{#if hasBeenAccepted}}
-          <td>Published</td>
-        {{else if hasBeenRejected}}
-          <td>Rejected</td>
-        {{else}}
-          <td>Pending</td>
-        {{/if}}
-      </tr>
+    <tr>
+      <td>{{ phrase }}</td>
+      {{#if hasBeenAccepted}}
+      <td>Published</td>
+      {{else if hasBeenRejected}}
+      <td>Rejected</td>
+      {{else}}
+      <td>Pending</td>
+      {{/if}}
+    </tr>
     {{/each}}
   </tbody>
 </table>
 
 {{#if thereAreRejected}}
-  <form action="/community-advice/delete" method="POST">
-    <button type="submit" class="btn btn-danger ml-2">Delete Rejected Advice</button>
-  </form>
+<form action="/community-advice/delete" method="POST">
+  <button type="submit" class="btn btn-danger ml-2">Delete Rejected Advice</button>
+</form>
 {{/if}}

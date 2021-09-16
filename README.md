@@ -37,8 +37,4 @@
 | GET	| /moderators/:moderatorId/edit	| Muestra formulario para editar moderador. Acceso solo admin	|
 | POST	| /moderators/:moderatorId/edit	| Guarda cambios de moderador en la BBDD (hacer que el moderador sea usuario normal). Acceso solo admin	|
 | POST	| /moderators/:moderatorId/delete	| Elimina moderador de BBDD (cambiar key active a false, no eliminar). Acceso solo admin	|
-| GET	| /moderators/create	| Muestra formulario para crear un nuevo usuario moderador (crear moderador de cero). Con campos de nombre y contraseña también. Acceso solo admin	|
-| POST	| /moderators/create	| Crea usuario nuevo con rol de moderador en la BBDD. Acceso solo admin	|
-| GET	| /moderators/edit-user	| Muestra formulario para convertir un usuario existente en moderador (cambiar el rol a un user). Búsqueda a través del correo electrónico. Acceso solo admin	|
-| POST	| /moderators/edit-user	| Actualiza rol de usuario en la BBDD. Acceso solo admin	|
 | GET	| /api/moods	| Muestra JSON con todos los moods de un usuario |

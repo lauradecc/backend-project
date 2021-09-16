@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const bcrypt = require('bcrypt')
 const { isBlank, userIsAdmin } = require("./../utils")
-const User = require("../models/User.model");
 const { isLoggedIn, checkId, checkRoles } = require("./../middleware")
+const User = require("../models/User.model");
 const APIHandler = require("./../services/APIHandler");
 const API = new APIHandler;
 
@@ -37,6 +37,7 @@ router.get('/:id/edit', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => 
 })
 
 
+
 router.post('/:id/edit', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) => {
 
 	const { id } = req.params
@@ -59,34 +60,10 @@ router.post('/:id/delete', isLoggedIn, checkId, checkRoles('ADMIN'), (req, res) 
 
 	const { id } = req.params
 
-	//TO_DO delete del user, actualmente active to false,
-	//en ese caso gestionar signup y login, si no eliminar del todo
-
-	// User
-	//   .findByIdAndUpdate(id, { active: false })
-	//   .then(() => res.redirect('/moderators'))
-	//   .catch(err => console.log(err))
-
 	User
 		.findByIdAndRemove(id)
 		.then(() => res.redirect('/moderators'))
 		.catch(err => console.log(err))
-})
-
-
-
-// TO_DO: Crear nuevo moderador es repetir bastante código, hacer partials (sign up)
-router.get('/moderators/create', isLoggedIn, checkRoles('ADMIN'), (req, res) => {
-
-	const { name, lastname, email, moderatorPwd } = req.body
-
-	// User
-	//   .create({ name, lastname, email })
-})
-
-
-router.post('/moderators/create', isLoggedIn, checkRoles('ADMIN'), (req, res) => {
-
 })
 
 

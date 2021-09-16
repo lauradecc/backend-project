@@ -1,26 +1,26 @@
- <div class="row justify-content-center">
+<div class="row justify-content-center">
 
-        <div class="col-md-4">
+  <div class="col-md-4">
 
-            <h1>Log In</h1>
-            <hr>
-            <br>
+    <h1>Log In</h1>
+    <hr>
+    <br>
 
-            <form action="/login" method="POST">
+    <form action="/login" method="POST">
 
-                {{> emailInput }}
+      {{> emailInput }}
 
-                {{> passwordInput }}
+      {{> passwordInput }}
 
-                <button type="submit" class="btn btn-dark btn-block">Log In</button>
+      <button type="submit" class="btn btn-dark btn-block">Log In</button>
 
-            </form>
+    </form>
 
-            {{> ifErrorMessage }}
+    {{> ifErrorMessage }}
 
-            <br>
+    <br>
 
-            <p class="text-center">Not Registered Yet? <a href="/signup">Sign Up For Free</a></p>
-            
-        </div>
-    </div>
+    <p class="text-center">Not Registered Yet? <a href="/signup">Sign Up For Free</a></p>
+
+  </div>
+</div>

@@ -1,29 +1,28 @@
+<div class="row justify-content-center">
 
-    <div class="row justify-content-center">
+  <div class="col-md-4">
 
-        <div class="col-md-4">
+    <h1>Sign Up</h1>
+    <hr>
+    <br>
 
-            <h1>Sign Up</h1>
-            <hr>
-            <br>
+    <form action="/signup" method="POST">
 
-            <form action="/signup" method="POST">
+      {{> nameLastnameInputs }}
 
-                {{> nameLastnameInputs }}
+      {{> emailInput }}
 
-                {{> emailInput }}
+      {{> passwordInput }}
 
-                {{> passwordInput }}
+      <button type="submit" class="btn btn-dark btn-block">Sign Up</button>
 
-                <button type="submit" class="btn btn-dark btn-block">Sign Up</button>
+    </form>
 
-            </form>
+    {{> ifErrorMessage }}
 
-            {{> ifErrorMessage }}
+    <br>
 
-            <br>
+    <p class="text-center">Already Have An Account? <a href="/login">Log In</a></p>
 
-            <p class="text-center">Already Have An Account? <a href="/login">Log In</a></p>
-            
-        </div>
-    </div>
+  </div>
+</div>

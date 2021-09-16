@@ -1,27 +1,29 @@
- <div class="row justify-content-center">
+<div class="row justify-content-center">
 
-    <div class="col-md-4">
+  <div class="col-md-4">
 
-        <h1>Edit My Profile</h1>
-        <hr>
-        <br>
+    <h1>Edit My Profile</h1>
+    <hr>
+    <br>
 
-        <form action="/my-profile/edit" method="POST">
+    <form action="/my-profile/edit" method="POST">
 
-            {{> nameLastnameInputs }}
+      {{> nameLastnameInputs }}
 
-            {{> emailInput }}
+      {{> emailInput }}
 
-            <button type="submit" class="btn btn-dark btn-block">Save Changes</button>
+      <button type="submit" class="btn btn-dark btn-block">Save Changes</button>
 
-        </form>
+    </form>
 
-        {{> ifErrorMessage }}
+    {{> ifErrorMessage }}
 
-        <hr>
-        <a href="/my-profile" class="btn btn-dark">Go back</a>
-        <br>
-        <br>
-        
-    </div>
+    <hr>
+
+    <a href="/my-profile" class="btn btn-dark">Go back</a>
+
+    <br>
+    <br>
+
+  </div>
 </div>

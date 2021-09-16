@@ -1,26 +1,29 @@
 <div class="row justify-content-center">
 
-    <div class="col-md-4">
+  <div class="col-md-4">
 
-        <h1>Edit Moment</h1>
-        <hr>
-        <br>
-            
-        <form action="/moments/{{ moment.id }}/edit" method="POST">
+    <h1>Edit Moment</h1>
 
-            {{> momentForm}}
+    <hr>
+    <br>
 
-            <button type="submit" class="btn btn-dark btn-block">Edit Moment</button>
+    <form action="/moments/{{ moment.id }}/edit" method="POST">
 
-        </form>
+      {{> momentForm}}
 
-        {{> ifErrorMessage }}
+      <button type="submit" class="btn btn-dark btn-block">Edit Moment</button>
 
-        <hr>
-        <a href="/moments" class="btn btn-dark">Go back</a>
-        <br>
-        <br>
+    </form>
 
-    </div>
+    {{> ifErrorMessage }}
+
+    <hr>
+
+    <a href="/moments" class="btn btn-dark">Go back</a>
+
+    <br>
+    <br>
+
+  </div>
 
 </div>

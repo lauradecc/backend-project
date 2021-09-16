@@ -19,7 +19,8 @@ router.get('/', isLoggedIn, (req, res) => {
             moments = moments.sort((a,b) => b.date - a.date) 
             moments = moments.map( moment => {
 
-                moment.date = formatDate(moment.date)               
+                moment.date = formatDate(moment.date)
+                moment.date = moment.date.split("-").reverse().join("-")               
                 return moment                              
             });
 

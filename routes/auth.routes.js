@@ -67,7 +67,7 @@ router.post('/login', (req, res) => {
       req.session.currentUser = user
       req.app.locals.isLogged = req.session.currentUser
       req.app.locals.currentUserName = req.session.currentUser.name
-      user.role === 'MODERATOR' || user.role === 'ADMIN' ? req.app.locals.isAuthorized = true : req.app.locals.isAuthorized = false
+      if (user.role === 'MODERATOR' || user.role === 'ADMIN') req.app.locals.isAuthorized = true
 
       res.redirect('/home')
     })
@@ -77,7 +77,7 @@ router.post('/login', (req, res) => {
 
 
 
-// Logout
+// Log out
 router.get('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'))
   req.app.locals.isLogged = false

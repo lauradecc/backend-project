@@ -1,21 +1,24 @@
-<h1>New advice to approve</h1>
+<h1>New advice</h1>
+
+<hr>
+<br>
 
 <ul>
-    {{#each advice}}
-        <li>
+  {{#each advice}}
+  <li>
 
-            {{ phrase }}
+    {{ phrase }}
 
-            <form action="/community-advice/control/{{ id }}" method="POST">
-                <button type="submit" name="hasBeenAccepted" value="true" class="btn btn-success btn-sm">Accept Advice</button>
-            </form>
+    <form action="/community-advice/control/{{ id }}" method="POST">
+      <button type="submit" name="hasBeenAccepted" value="true" class="btn btn-success btn-sm">Accept Advice</button>
+    </form>
 
-            <form action="/community-advice/control/{{ id }}" method="POST">
-                <button type="submit" name="hasBeenRejected" value="true" class="btn btn-danger btn-sm">Reject Advice</button>
-            </form>
+    <form action="/community-advice/control/{{ id }}" method="POST">
+      <button type="submit" name="hasBeenRejected" value="true" class="btn btn-danger btn-sm">Reject Advice</button>
+    </form>
 
-            <a href="/community-advice/{{ id }}/edit" class="btn btn-primary btn-sm">Editar</a>
+    <a href="/community-advice/{{ id }}/edit" class="btn btn-primary btn-sm">Editar</a>
 
-        </li>
-    {{/each}}
+  </li>
+  {{/each}}
 </ul>

@@ -6,10 +6,41 @@
 
 <div class="d-flex">
 
-    <a href="/my-profile/edit" class="btn btn-primary">Edit My Profile</a>
+  <a href="/my-profile/edit" class="btn btn-primary">Edit My Profile</a>
 
-    <form action="/my-profile/delete" method="POST">
-        <button type="submit" class="btn btn-danger ml-2">Delete My Profile</button>
-    </form>
+  <form action="/my-profile/delete" method="POST">
+    <button type="submit" class="btn btn-danger ml-2">Delete My Profile</button>
+  </form>
 
 </div>
+
+<h2 class="mt-5">My Advice</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Advice</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each advice}}
+      <tr>
+        <td>{{ phrase }}</td>
+        {{#if hasBeenAccepted}}
+          <td>Published</td>
+        {{else if hasBeenRejected}}
+          <td>Rejected</td>
+        {{else}}
+          <td>Pending</td>
+        {{/if}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{#if thereAreRejected}}
+  <form action="/community-advice/delete" method="POST">
+    <button type="submit" class="btn btn-danger ml-2">Delete Rejected Advice</button>
+  </form>
+{{/if}}

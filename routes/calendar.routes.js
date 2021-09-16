@@ -7,21 +7,22 @@ const { isLoggedIn } = require("./../middleware")
 router.get('/', isLoggedIn, (req, res) => res.render('pages/calendar/calendar'))
 
 
+
 router.post('/', isLoggedIn, (req, res) => {
 
   const { date, rating } = req.body
   const owner = req.session.currentUser._id
   let color = ''
 
-  switch(rating) {
+  switch (rating) {
     case '1':
       color = '#FF0000';
       break;
     case '2':
-      color = '#D07D20';
+      color = '#FF741E';
       break;
     case '3':
-      color = '#E3E50D';
+      color = '#1EA8FF';
       break;
     case '4':
       color = '#8DE50D';
@@ -33,10 +34,18 @@ router.post('/', isLoggedIn, (req, res) => {
       color = '#FFFF';
       break;
   }
-  
-  Mood 
-    .create({ date, rating, color, owner})
-    .then(() => res.render('pages/home', { successMsg: 'Mood saved successfully' }))
+
+  let moodAlreadyExists = false
+
+
+  Mood
+    .find({ owner, date })
+    .then(mood => moodAlreadyExists = mood.length === 1)
+    .then(() => Mood.updateOne({ owner, date }, { date, rating, color, owner }, { new: true, upsert: true, setDefaultsOnInsert: true }))
+    .then(() => {
+      if (!moodAlreadyExists) res.render('pages/home', { successMsg: 'Mood saved successfully' })
+      else res.render('pages/home', { successMsg: 'Mood updated successfully' })
+    })
     .catch(err => console.log(err))
 });
 

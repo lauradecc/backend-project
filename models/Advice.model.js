@@ -5,7 +5,7 @@ const adviceSchema = new Schema(
     phrase: {
       type: String,
       required: true,
-      minlength: 2,
+      minlength: 1,
       maxlength: 250,
       trim: true
     },

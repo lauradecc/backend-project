@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const Advice = require("../models/Advice.model")
 const { isBlank } = require("./../utils")
-const { isLoggedIn, checkRoles} = require("./../middleware")   // usar checkroles
+const { isLoggedIn, checkRoles } = require("./../middleware")
 
 
 
-router.get("/", isLoggedIn, (req, res) => {
-  
+router.get('/', isLoggedIn, (req, res) => {
+
   Advice
     .find({ hasBeenAccepted: true })
     .select('phrase rating') // TO_DO rating? No lo estamos pasando, aún no está creado
@@ -16,7 +16,7 @@ router.get("/", isLoggedIn, (req, res) => {
 
 
 
-router.post("/", isLoggedIn, (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
 
   const { phrase } = req.body
   const owner = req.session.currentUser._id
@@ -34,13 +34,14 @@ router.post("/", isLoggedIn, (req, res) => {
 
   Advice
     .create({ phrase, owner })
-    .then(() => res.redirect('/community-advice'))
+    .then(() => Advice.find({ hasBeenAccepted: true }).select('phrase rating'))
+    .then(advice => res.render('pages/community-advice/advice', { advice, successMsg: 'Advice successfully sent to validate' }))
     .catch(err => console.log(err))
 });
 
 
 
-router.get("/control", isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
+router.get('/control', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
   Advice
     .find({ hasBeenAccepted: false, hasBeenRejected: false })
@@ -51,21 +52,21 @@ router.get("/control", isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) 
 
 
 
-router.post("/control/:id", isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
+router.post('/control/:id', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
   const { id } = req.params
   const { hasBeenAccepted, hasBeenRejected } = req.body
   console.log(req.body)
-  
+
   Advice
     .findByIdAndUpdate(id, { hasBeenAccepted, hasBeenRejected }, { new: true })
     .then(() => res.redirect('/community-advice/control'))
-    .catch(err => console.log(err))  
+    .catch(err => console.log(err))
 });
 
 
 
-router.get("/:id/edit", isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
+router.get('/:id/edit', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
   const { id } = req.params
 
@@ -78,7 +79,7 @@ router.get("/:id/edit", isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res)
 
 
 
-router.post("/:id/edit", isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
+router.post('/:id/edit', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 
   const { id } = req.params
   const { phrase } = req.body
@@ -86,6 +87,18 @@ router.post("/:id/edit", isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res
   Advice
     .findByIdAndUpdate(id, { phrase })
     .then(() => res.redirect('/community-advice/control'))
+    .catch(err => console.log(err))
+});
+
+
+
+router.post('/delete', isLoggedIn, (req, res) => {
+
+  const id = req.session.currentUser
+
+  Advice
+    .remove({ owner: id, hasBeenRejected: true })
+    .then(() => res.redirect('/my-profile'))
     .catch(err => console.log(err))
 });
 

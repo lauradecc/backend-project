@@ -13,7 +13,6 @@
 | GET   | /my-profile/edit	| Muestra formulario para editar datos (nombre, apellidos, email, contraseña)	|
 | POST	| /my-profile/edit	| Actualiza info en BBDD y redirije al perfil	|
 | POST	| /my-profile/delete	| Cambia active a false	|
-| POST 	| /:adviceId/delete	| Elimina consejo de BBDD y redirije al perfil	|
 | GET	| /home	| Saluda al usuario y pregunta cómo está hoy + otras opciones (botones)	|
 | POST	| /home	| Guarda estado de ánimo en la BBDD	|
 | GET	| /calendar	| Muestra el calendario |
@@ -28,12 +27,12 @@
 | GET	| /api/places	| Retorna json de todos los lugares para llamarlo desde el js	|
 | GET	| /daily-phrase	| Muestra la frase inspiracional del día traída desde API (la de la home)	|
 | GET	| /activity	| Muestra una actividad para hacer traída desde API	|
-| GET	| /daily-advice |	Muestra el consejo del día traído desde API	|
 | GET	| /community-advice	| Muestra la lista de consejos que publican los usuarios (aceptados por el moderador) y formulario para crear un nuevo consejo para la comunidad |
 | POST	| /community-advice	| Guarda consejo en la BBDD a la espera de ser aceptados y redirige a la lista de consejos de usuarios	|
 | GET	| /community-advice/control	| Muestra la lista de consejos por aceptar y ofrece al moderador la opción de aceptarlos/editarlos/eliminarlos. Acceso solo al moderador y al admin |
 | GET	| /community-advice/:adviceId/edit	| Muestra formulario para editar consejo. Acceso solo al moderador y al admin |
 | POST	| /community-advice/:adviceId/edit	| Actualiza consejo en la base de datos y redirige a la lista de consejos por aceptar. Acceso solo al moderador y al admin |
+| POST 	| /community-advice/delete	| Elimina los consejos de un usuario rechazados por el moderador. Acceso desde el perfil del usuario |
 | GET	| /moderators	| Muestra una lista de los moderadores actuales (puede editarlos o eliminarlos)	| Acceso admin y moderadores, pero solo ve las opciones de editar y eliminar el admin |
 | GET	| /moderators/:moderatorId/edit	| Muestra formulario para editar moderador. Acceso solo admin	|
 | POST	| /moderators/:moderatorId/edit	| Guarda cambios de moderador en la BBDD (hacer que el moderador sea usuario normal). Acceso solo admin	|

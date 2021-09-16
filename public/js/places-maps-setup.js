@@ -3,23 +3,23 @@ function initMap() {
   const map = new google.maps.Map(document.querySelector("#myMap"), {
     zoom: 12,
     center: {
-      lat: 40.4198832709855,
-      lng: -3.6223011629634767,
+      lat: 40.416599,
+      lng: -3.704299,
     },
   });
 
   getPlaces(map);
 }
 
-  
+
 function getPlaces(map) {
-  
+
   axios
     .get("/api/places")
     .then((response) => printPlaces(response.data, map))
     .catch((err) => console.log(err));
 }
-  
+
 
 function printPlaces(places, map) {
 

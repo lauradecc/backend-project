@@ -5,11 +5,6 @@ const API = new APIHandler;
 
 
 
-// Se ha caído el servidor de la API, volveremos a mirar
-router.get('/advice', isLoggedIn, (req, res) => res.render('pages/daily/advice'))
-
-
-
 router.get('/phrase', isLoggedIn, (req, res) => {
 
   API

@@ -1,6 +1,19 @@
-<h1>The daily activity is...</h1>
+<h1>Daily Activity</h1>
 
-<p>{{ response.data.activity }}</p>
-<p><small>Activity type: {{ response.data.type }}</small></p>
+<hr>
+<br>
 
-<a href="/daily/activity" class="btn btn-dark">Choose A New Activity</a>
+<div class="d-flex flex-column align-items-center">
+
+    <p class="text-center">{{ response.data.activity }}</p>
+    <p><small>Activity type: {{ response.data.type }}</small></p>
+    <br>
+    <a href="/daily/activity" class="btn btn-dark">Choose A New Activity</a>
+
+</div>
+
+<br>
+<br>
+<hr>
+
+<a href="/home" class="btn btn-dark">Go back</a>

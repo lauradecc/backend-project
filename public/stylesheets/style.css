@@ -3,7 +3,8 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
+h1,
+h2 {
   text-align: center;
 }
 
@@ -18,22 +19,18 @@ h3 {
 }
 
 .mood-label img {
-  height: 30px;
+  height: 45px;
 }
 
-.mood { 
+.mood {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.mood + img {
+.mood+img {
   cursor: pointer;
-}
-
-.mood:checked + img {
-  outline: 2px solid #f00;
 }
 
 #errorMessage {

@@ -10,7 +10,7 @@ class APIHandler {
 
     getActivity = () => axios.get("http://www.boredapi.com/api/activity/");
 
-    getUsersRoleUSER = () => axios.get("https://happiapp.herokuapp.com/api/users");
+    getUsersRoleUSER = () => axios.get(`${process.env.API_URL}`);
 
 }
 

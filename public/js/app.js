@@ -22,9 +22,9 @@ const getUsers = (search) => {
     if(search === '') return []
 
     console.log("el texto buscado", search)
-    //texto buscado
+    
     axios
-        .get(`https://happiapp.herokuapp.com/api/users/`)
+        .get(window.location.href.includes("happiapp") ? `https://happiapp.herokuapp.com/api/users/` : 'http://localhost:3000/api/users/')
         .then(response => {
 
             let users = response.data

@@ -22,7 +22,7 @@ function getPlaces(map) {
 
 
 function printPlaces(places, map) {
-
+  console.log(places)
   places.forEach((elm) => {
     let position = {
       lat: elm.location.coordinates[0],

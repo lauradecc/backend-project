@@ -1,22 +1,29 @@
 const router = require("express").Router();
 const Mood = require("./../models/Mood.model");
-const Place = require("./../models/Place.model");
 const User = require("./../models/User.model");
+const Moment = require('./../models/Moment.model');
 
 
 
 router.get("/places", (req, res) => {
 
-  Place
-    .find()
-    .then(places => res.json(places))
+  const id = req.session.currentUser._id
+
+  Moment
+    .find({ owner: id })
+    .populate('place')
+    .select('place')
+    .then(places => {
+      const filteredPlaces = places.filter(moment => moment.place).map(e => e.place)
+      res.json(filteredPlaces)
+    })
     .catch((err) => console.log(err));
-  });
+});
 
 
 
 router.get("/moods", (req, res) => {
-  
+
   const id = req.session.currentUser._id
 
   Mood
@@ -34,7 +41,7 @@ router.get("/users", (req, res) => {
     .select('email name lastname')
     .then(users => res.json(users))
     .catch((err) => console.log(err));
-  });
+});
 
 
 

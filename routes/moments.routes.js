@@ -48,9 +48,7 @@ router.post('/create', isLoggedIn, (req, res) => {
   if ((!isBlank(lat) && (isBlank(lng) || isBlank(name))) ||
      (!isBlank(lng) && (isBlank(lat) || isBlank(name))) ||
      (!isBlank(name) && (isBlank(lat) || isBlank(lng)))) {
-    res.render('pages/moments/create-moment', {
-      errorMsg: 'Must fill Place Name, Latitude and Longitud to save a place in a Moment'
-    })
+    res.render('pages/moments/create-moment', { errorMsg: 'Must fill Place Name, Latitude and Longitud to save a place in a Moment' })
     return
   }
 
@@ -64,7 +62,7 @@ router.post('/create', isLoggedIn, (req, res) => {
 
   Place
     .create({ name, location })
-    .then(newPlace => Moment.create({ dateReversed, phrase, place: newPlace._id, owner }))
+    .then(newPlace => Moment.create({ date, phrase, place: newPlace._id, owner }))
     .then(() => res.redirect('/moments'))
     .catch(err => console.log(err))
 })

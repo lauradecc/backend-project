@@ -1,5 +1,16 @@
-# backend-project
+# Happi
 
+#### App demo: https://happiapp.herokuapp.com
+
+### Description
+
+**Happi** is a web application to help people to be happier and to recall the good things in life. 
+
+### Usage
+
+The app allows the user to track their mood by adding it to their calendar. Users are also able to register all the good moments they live in order to remember them easier and also offer the possibility to add a place to them and see them later on a map. There is also a community oriented space, where users can share advice with each other about how to feel or make others feel better, and vote other's advice. Happi also includes inspirational quotes and daily activities ideas.
+
+### Endpoints
 
 | Method | Path | Description |
 | ------------- | ------------- | ------------- |
@@ -38,3 +49,18 @@
 | GET	| /api/moods	| Displays JSON with all moods of a user. |
 | GET	| /api/places	| Returns a JSON file with every place added by the user.	|
 | GET	| /api/users	| Returns a JSON file with all users with USER as a role.	|
+
+### Technologies
+
+- MongoDB
+- Express
+- Node
+- Javascript (ES6)
+- Handlebars
+- Axios
+- HTML & CSS
+- Bootstrap
+
+### Additional info
+
+This project has been developed by Ramón Bohopo and Laura de Cos as the second project of Ironhack's Web Development Bootcamp and it has been created in five days.

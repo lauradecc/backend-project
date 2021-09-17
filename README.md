@@ -57,18 +57,10 @@ The app allows the user to track their mood by adding it to their calendar. User
 - Node
 - Javascript (ES6)
 - Handlebars
-<<<<<<< HEAD
-- Axios
-=======
 - AJAX
->>>>>>> 8e796b19ee12c27c00c2600385a3a68ea6a93256
 - HTML & CSS
 - Bootstrap
 
 ### Additional info
 
-<<<<<<< HEAD
 This project has been developed by Ramón Bohopo and Laura de Cos as the second project of Ironhack's Web Development Bootcamp and it has been created in five days.
-=======
-This project has been developed by Ramón Bohopo and Laura de Cos as the second project of Ironhack's Web Development Bootcamp and it has been created in five days.
->>>>>>> 8e796b19ee12c27c00c2600385a3a68ea6a93256

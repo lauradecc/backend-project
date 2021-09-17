@@ -57,7 +57,7 @@ The app allows the user to track their mood by adding it to their calendar. User
 - Node
 - Javascript (ES6)
 - Handlebars
-- Axios
+- AJAX
 - HTML & CSS
 - Bootstrap
 

@@ -4,7 +4,7 @@
 
 ### Description
 
-**Happi** is a web application to help people to be happier and to recall the good things in life. 
+**Happi** is a web application  to recall the good things in life and to help people to be happier. 
 
 ### Usage
 

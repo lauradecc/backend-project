@@ -6,9 +6,30 @@
 
 **Happi** is a web application to recall the good things in life and to help people to be happier. 
 
-### Usage
+### App functionalities
 
 The app allows the user to track their mood by adding it to their calendar. Users are also able to register all the good moments they live in order to remember them easier and also offer the possibility to add a place to them and see them later on a map. There is also a community oriented space, where users can share advice with each other about how to feel or make others feel better, and vote other's advice. Happi also includes inspirational quotes and daily activities ideas.
+
+### Install
+
+```sh
+npm install
+```
+
+### Usage
+
+```sh
+npm run dev
+```
+
+### .env variables needed
+
+- PORT=3000
+- DB_REMOTE
+- SESS_SECRET
+- API_KEY (Google Maps)
+- API_URL=http://localhost:3000/api/users/
+
 
 ### Endpoints
 

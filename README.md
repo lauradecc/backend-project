@@ -10,7 +10,7 @@
 | POST  | /login	| If the data introduced corresponds to a registered user and the password is correct, the user is logged in and gets redirected to /home, otherwise the user gets an error message. |
 | GET   | /logout	| Ends the current session and redirects to homepage.	|
 | GET   | /my-profile	| Displays user info and allows the user to edit or delete the profile. If community advice had been written by the user, they will be displayed on this page with their corresponding status (published, pending, rejected); the user is able to delete all rejected advice from the list.	|
-| GET   | /my-profile/edit	| Displays a form that allows user to edit personal info (name, last name, email, password).	|
+| GET   | /my-profile/edit	| Displays a form that allows user to edit personal info (name, last name, email).	|
 | POST	| /my-profile/edit	| Updates user info at database and redirects to personal profile |
 | POST	| /my-profile/delete	| Deletes user's account.	|
 | GET	| /home	| Greets the user by name and ask "How do you feel today?"; below the question, the user is able to select a date and press one of five faces to choose the one that best represent how they feel. Buttons to the main pages of the app are also displayed on this page.	|
@@ -23,7 +23,6 @@
 | POST	| /moments/:momentId/edit	| Updates info at database and redirects to moment's list.	|
 | POST	| /moments/:momentId/delete	| Deletes a moment from database.	|
 | GET	| /places	| Displays a map with all the places added by the user. |
-| GET	| /api/places	| Returns a json file with every place added by the user.	|
 | GET	| /daily/phrase	| Displays an inspirational quote brought from an API.	|
 | GET	| /daily/activity	| Displays an activity brought from an API.	|
 | GET	| /community-advice	| Displays all advice published by users and accepted by moderators. It also displays a form that allows users to create new advice. |
@@ -37,3 +36,5 @@
 | POST	| /moderators/:moderatorId/edit	| Updates moderator changes in the database. Admin only access.	|
 | POST	| /moderators/:moderatorId/delete	| Deletes moderator from database. Admin only access.	|
 | GET	| /api/moods	| Displays JSON with all moods of a user. |
+| GET	| /api/places	| Returns a JSON file with every place added by the user.	|
+| GET	| /api/users	| Returns a JSON file with all users with USER as a role.	|

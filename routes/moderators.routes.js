@@ -14,13 +14,13 @@ router.get('/', isLoggedIn, checkRoles('ADMIN', 'MODERATOR'), (req, res) => {
 	const users = API.getUsersRoleUSER()
 	const moderators = User.find({ role: 'MODERATOR' }).select('name lastname email')
 
-	Promise.all([ users, moderators ]).then(data => {
+	Promise.all([users, moderators]).then(data => {
 
-		const [ users, moderators ] = data
+		const [users, moderators] = data
 
 		res.render('pages/moderators/moderators', { users, moderators, isAdmin })
 	})
-	.catch(err => console.log(err))
+		.catch(err => console.log(err))
 });
 
 

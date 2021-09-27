@@ -84,4 +84,4 @@ npm run dev
 
 ### Additional info
 
-This project has been developed by Ramón Bohopo and Laura de Cos as the second project of Ironhack's Web Development Bootcamp and it has been created in five days.
+This project has been developed by Jose Bohopo and Laura de Cos as the second project of Ironhack's Web Development Bootcamp and it has been created in five days.
